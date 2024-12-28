@@ -1,0 +1,15 @@
+{
+    "menu":{
+        "volume" : 1,
+        "loop" : true,
+        "start_time" : 3.479,
+        "end_time" : 67.976
+    },
+    
+    "homebrew_channel":{
+        "volume": 1,
+        "loop" : true,
+        "start_time" : 8.440,
+        "end_time" : 16.861
+    }
+}

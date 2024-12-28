@@ -1,0 +1,173 @@
+/* z index order
+-1: Striped background
+0: Home bottom
+1: Mail button, time and date
+2: channels
+3: tooltip background
+4: tooltip text
+*/
+
+@font-face {
+    font-family: 'Rodin';
+    src: url('./assets/fonts/Rodin.woff');
+}
+
+@font-face {
+    font-family: 'Rodin2';
+    src: url('./assets/fonts/Rodin.otf');
+}
+
+@font-face{
+    font-family: 'Segment';
+    src: url('./assets/fonts/vertopal.com_DSEG7ClassicMini-Bold.woff') format('woff');
+}
+
+@keyframes tooltipFadeIn{
+    0% {
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes tooltipScaleOut{
+    to{
+        transform: scale(1.1);
+    }
+}
+
+.background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+.home-bottom{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box; 
+    z-index: 0;
+}
+
+.combined-home-screen{
+    cursor: url("./assets/site_cursor.png") 39 0, auto;
+}
+
+.mail-button{
+    position: absolute;
+    top: 75.4%;
+    right: 3.8%;
+    width: 10%;
+    height: 20%;
+    box-sizing: border-box;
+    z-index: 1; 
+    transition: transform 0.125s ease;
+}
+
+.mail-button:hover {
+    transform: scale(1.08);
+}
+
+.mail-tooltip{
+    position: absolute;
+    z-index: 3;
+    top: 69.5%;
+    left: 78%;
+    animation: tooltipFadeIn ease-in-out 0.2s;
+    animation: tooltipScaleOut 0.07s ease-in-out forwards;
+}
+
+.mail-tooltip-text{
+    position: relative;
+    font-family: 'Rodin2', sans-serif;
+    color: #656865;
+    z-index: 4;
+    font-size: 200%;
+    transform: scaleY(1.2);
+}
+
+.mail-tooltip-background{
+    position: absolute;
+    object-fit:contain;
+    transform: translate(-50%, 8%);
+    width: 140%;
+    height: 80%;
+    object-fit: fill;
+    z-index: 3;
+    filter: drop-shadow(10px 8px 10px #999899);
+}
+
+.date-text{
+    position: absolute;
+    font-family: 'Rodin', sans-serif;
+    color: #727472;
+    top: 105%;
+    font-size: 100%;
+    font-weight: bold;
+    white-space: nowrap;
+    transform: translate(-17%, 0%);
+}
+
+.time-container{
+    align-items: center;
+    position: absolute;
+    top: 70.9%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    z-index: 1;
+    font-size: 4.5rem;
+}
+
+.time-right{
+    font-family: 'Segment', sans-serif;
+    color: #8c8d8c;
+    font-weight: bold;
+    position: abolute;
+    transform: translate(10%, 0%);
+}
+
+.time-left{
+    font-family: 'Segment', sans-serif;
+    color: #8c8d8c;
+    font-weight: bold;
+    position: abslolute;
+    transform: translate(-10%, 0%);
+}
+
+.colon{
+    position: absolute;
+    top: -10%; /* Adjusted for slight upward movement */
+    left: 30%; /* Keep it horizontally aligned */
+    transition: opacity 0.1s ease-in-out; /* Smooth fading */
+    color: #8c8d8c;
+    
+}
+
+
+.colon.hidden{
+    opacity: 0;
+}
+
+.colon.visible {
+    opacity: 1;
+}
+
+.am-pm{
+    position: absolute;
+    font-family: 'Rodin', sans-serif;
+    color: #8c8d8c;
+    font-weight: bold;
+    font-size: 2.5rem;
+    transform: translate(365%, 33%);
+}
