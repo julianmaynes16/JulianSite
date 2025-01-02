@@ -41,3 +41,6 @@
   color: #888;
 }
 
+.home-screen{
+  cursor: url("./assets/site_cursor.png") 39 0, auto;
+}

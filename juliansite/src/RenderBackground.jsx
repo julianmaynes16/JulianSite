@@ -3,6 +3,7 @@ import homeMenuBottom from './assets/homeMenuBottom.png'
 import homeMenuBackground from './assets/HomeMenuBackground.jpg'
 import MailButton from './assets/MailButton.png'
 import './renderBackground.css'
+
 import menuHoverSound from './assets/sounds/MenuHover.mp3'
 import tooltipSound from './assets/sounds/tooltipSound.mp3'
 import tooltipBackground from './assets/TooltipBackground.png'
@@ -51,14 +52,13 @@ export default function RenderBackground(){
             <img src = {homeMenuBottom} alt="Bottom" className = "home-bottom"/>
             <img src = {homeMenuBackground} alt="Background" className = "background"/>
             <img src = {MailButton} alt="Mail" className = "mail-button" onMouseEnter = {handleMenuHover} onMouseLeave = {handleMenuLeave}/>
-            {tooltipVisible && (
                 
-                <div className = "mail-tooltip">
-                    <img className = "mail-tooltip-background"
-                         src = {tooltipBackground}/>
-                    <p className = "mail-tooltip-text">Message Board</p>
-                </div>
-            )}
+            <div className = {`mail-tooltip ${tooltipVisible ? 'visible' : 'hidden'}`}>
+                <img className = {`mail-tooltip-background ${tooltipVisible ? 'visible' : 'hidden'}`}
+                        src = {tooltipBackground}/>
+                <p className = {`mail-tooltip-text ${tooltipVisible ? 'visible' : 'hidden'}`}>Message Board</p>
+            </div>
+        
             
             <p className = "time-container">
                 <span className = "time-left">
