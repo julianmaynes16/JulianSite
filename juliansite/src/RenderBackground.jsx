@@ -9,14 +9,39 @@ import tooltipSound from './assets/sounds/tooltipSound.mp3'
 import tooltipBackground from './assets/TooltipBackground.png'
 
 export default function RenderBackground(){
+    const menuRef = useRef(null);
     const tooltipTime = useRef(null);
     const tooltipShow = useRef(new Audio(tooltipSound));
 
     const [time,setTime] = useState(getTime());
     const [showColon, setShowColon] = useState(true);
     const [tooltipVisible, setTooltipVisible] = useState(false);
+    const [letterboxState, setLetterboxState] = useState("zoom");
 
     useEffect(() => {
+
+        const handleResize = () => {
+            const screenAspectRatio = window.innerWidth / window.innerHeight;
+            const maxZoomAspectRatio = 18 / 9;
+            const homeMenuAspectRatio =  
+            console.log(screenAspectRatio);
+
+            if (screenAspectRatio > maxZoomAspectRatio) {
+                // Letterbox mode
+                setLetterboxState("letterbox");
+            } else if(screenAspectRatio < 1843 / 1004) {
+                // shrink mode
+                setLetterboxState("shrink");
+            }else{
+                //zoom mode
+                setLetterboxState("zoom");
+            }
+
+        };
+
+        handleResize(); // Initial setup
+        window.addEventListener("resize", handleResize);
+
         const interval = setInterval(()=> {
             setTime(getTime());
         }, 1000);
@@ -28,6 +53,7 @@ export default function RenderBackground(){
         return () => {
             clearInterval(interval);
             clearInterval(colonInterval);
+            window.removeEventListener("resize", handleResize);
         };
     }, []);
 
@@ -48,9 +74,9 @@ export default function RenderBackground(){
 
 
     return(
-        <div className = "combined-home-screen">
-            <img src = {homeMenuBottom} alt="Bottom" className = "home-bottom"/>
-            <img src = {homeMenuBackground} alt="Background" className = "background"/>
+        <div className = {`combined-home-screen ${letterboxState}`}>
+            <img src = {homeMenuBottom} alt="Bottom" className = {`home-bottom ${letterboxState}`}/>
+            <img src = {homeMenuBackground} alt="Background" className = {`background ${letterboxState}`}/>
             <img src = {MailButton} alt="Mail" className = "mail-button" onMouseEnter = {handleMenuHover} onMouseLeave = {handleMenuLeave}/>
                 
             <div className = {`mail-tooltip ${tooltipVisible ? 'visible' : 'hidden'}`}>
@@ -99,4 +125,13 @@ function getAMPM(){
     const today = new Date();
     const ampm = today.getHours() >= 12 ? "PM" : "AM";
     return ampm;
+}
+
+function controlResizing(){
+    let background = document.querySelector(".background");
+    let aspectRatio = background.width / background.height;
+
+    if(aspectRatio > 19/9){
+
+    }
 }
