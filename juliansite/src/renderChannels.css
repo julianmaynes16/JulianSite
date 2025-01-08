@@ -90,6 +90,25 @@
     opacity: 0.65;
 }
 
+.channel-hover-border{
+    position: absolute;
+    object-fit: fill;
+    transition: opacity 0.1s ease-in-out;
+    top: 0px;
+    left: 0px;
+    width: 200vw;
+    height: 100vh;
+    z-index: 6;
+}
+
+.channel-select-background.selected{
+    opacity: 1;
+}
+
+.channel-select-background.unselected{
+    opacity: 1;
+}
+
 .channel-hover-border.fade-out{
     animation: channelHoverBorderFadeOut 0.43s ease-in-out forwards;
 }

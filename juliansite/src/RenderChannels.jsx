@@ -5,6 +5,7 @@ import channelBackground from './assets/ChannelMask.png'
 import channeljson from './channelMetadata.json'
 import menuChannelClick from './assets/sounds/ChannelClick.mp3'
 
+import channelSelectBackground from './assets/ChannelSelectBackground.png'
 import channelHoverBorder from './assets/ChannelHoverBorder.png'
 import menuHoverSound from './assets/sounds/MenuHover.mp3'
 import tooltipSound from './assets/sounds/tooltipSound.mp3'
@@ -74,6 +75,7 @@ export default function RenderChannels({ channelState, setChannelState }){
                  onMouseEnter = {handleMenuHover} 
                  onMouseLeave = {handleMenuLeave}
                  onClick = {handleMenuClick}/>
+            <img src = {channelSelectBackground} className = {`channel-select-background ${channelState === "selected" ? "selected" : "unselected"}`}/>
             <div className = {`channel-tooltip ${tooltipVisible ? 'visible' : 'hidden'}`}>
                 <img className = {`channel-tooltip-background ${tooltipVisible ? 'visible' : 'hidden'}`}
                         src = {tooltipBackground}/>

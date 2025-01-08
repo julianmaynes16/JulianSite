@@ -6,6 +6,7 @@
 3: channels
 4: tooltip background
 5: tooltip text
+6: Channel Select Black Background
 */
 
 @font-face {
@@ -45,7 +46,23 @@
     }
 }
 
+@keyframes channelSelectZoomIn{
+    0%{
+        zoom: 100%;
+    }
+    100%{
+        zoom: 200%;
+    }
+}
 
+.combined-home-screen{
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 50vw 50vh;
+    transform: scale(1); 
+    transition: transform 1s ease-in-out, transform-origin 1s ease-in-out; 
+}
 
 .background{
     position: absolute;
@@ -56,8 +73,16 @@
     object-fit: cover;
     z-index: -1;
 }
-.home-bottom{
+
+.bottom{
     position: absolute;
+    top: 0;
+    left: 0;
+
+}
+
+.home-bottom{
+    position: relative;
     top: 0;
     left: 0;
     width: 100vw;
@@ -145,67 +170,31 @@
     animation: tooltipFadeOutScale 0.07s ease-in-out forwards;
 }
 
-.date-text{
-    position: absolute;
+.date{
     font-family: 'Rodin', sans-serif;
     color: #727472;
     top: 105%;
     font-size: 100%;
     font-weight: bold;
     white-space: nowrap;
-    transform: translate(-17%, 0%);
+    transform: translate(20%, 85%);
 }
 
 .time-container{
-    align-items: center;
     position: absolute;
-    top: 70.9%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 75%; 
+    left: 40%; 
     z-index: 1;
     font-size: 4.5rem;
 }
 
-.time-right{
-    font-family: 'Segment', sans-serif;
-    color: #8c8d8c;
-    font-weight: bold;
-    position: abolute;
-    transform: translate(10%, 0%);
-}
-
-.time-left{
-    font-family: 'Segment', sans-serif;
-    color: #8c8d8c;
-    font-weight: bold;
-    position: abslolute;
-    transform: translate(-10%, 0%);
-}
-
-.colon{
+.time{
+    /* color: #8c8d8c; */
     position: absolute;
-    top: -10%; /* Adjusted for slight upward movement */
-    left: 30%; /* Keep it horizontally aligned */
-    transition: opacity 0.1s ease-in-out; /* Smooth fading */
-    color: #8c8d8c;
-    
-}
-
-
-.colon.hidden{
-    opacity: 0;
-}
-
-.colon.visible {
-    opacity: 1;
-}
-
-.am-pm{
-    position: absolute;
-    font-family: 'Rodin', sans-serif;
-    color: #8c8d8c;
-    font-weight: bold;
-    font-size: 2.5rem;
-    transform: translate(365%, 33%);
+    top: -15%;
+    width: 20%;
+    filter: invert(40%) sepia(6%) saturate(45%) hue-rotate(71deg) brightness(100%) contrast(92%);
 }

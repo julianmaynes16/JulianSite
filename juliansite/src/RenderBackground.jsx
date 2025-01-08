@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
+
+import RenderTime from './RenderTime.jsx'
 import homeMenuBottom from './assets/homeMenuBottom.png'
 import homeMenuBackground from './assets/HomeMenuBackground.jpg'
 import MailButton from './assets/MailButton.png'
@@ -12,21 +14,21 @@ export default function RenderBackground(){
     const tooltipTime = useRef(null);
     const tooltipShow = useRef(new Audio(tooltipSound));
 
-    const [time,setTime] = useState(getTime());
+    // const [time,setTime] = useState(getTime());
     const [showColon, setShowColon] = useState(true);
     const [tooltipVisible, setTooltipVisible] = useState(false);
 
     useEffect(() => {
-        const interval = setInterval(()=> {
-            setTime(getTime());
-        }, 1000);
+        // const interval = setInterval(()=> {
+        //     setTime(getTime());
+        // }, 1000);
 
         const colonInterval = setInterval(() => {
             setShowColon((prev)=> !prev);
         }, 1000);
 
         return () => {
-            clearInterval(interval);
+            //clearInterval(interval);
             clearInterval(colonInterval);
         };
     }, []);
@@ -49,30 +51,31 @@ export default function RenderBackground(){
 
     return(
         <div className = "combined-home-screen">
-            <img src = {homeMenuBottom} alt="Bottom" className = "home-bottom"/>
             <img src = {homeMenuBackground} alt="Background" className = "background"/>
-            <img src = {MailButton} alt="Mail" className = "mail-button" onMouseEnter = {handleMenuHover} onMouseLeave = {handleMenuLeave}/>
-                
-            <div className = {`mail-tooltip ${tooltipVisible ? 'visible' : 'hidden'}`}>
-                <img className = {`mail-tooltip-background ${tooltipVisible ? 'visible' : 'hidden'}`}
-                        src = {tooltipBackground}/>
-                <p className = {`mail-tooltip-text ${tooltipVisible ? 'visible' : 'hidden'}`}>Message Board</p>
+            <div className = "bottom">
+                <img src = {homeMenuBottom} alt="Bottom" className = "home-bottom"/>
+                <img src = {MailButton} alt="Mail" className = "mail-button" onMouseEnter = {handleMenuHover} onMouseLeave = {handleMenuLeave}/>
+                    
+                <div className = {`mail-tooltip ${tooltipVisible ? 'visible' : 'hidden'}`}>
+                    <img className = {`mail-tooltip-background ${tooltipVisible ? 'visible' : 'hidden'}`}
+                            src = {tooltipBackground}/>
+                    <p className = {`mail-tooltip-text ${tooltipVisible ? 'visible' : 'hidden'}`}>Message Board</p>
+                </div>
+
+                <div className = "time-container">
+                    <div className = "time">
+                        <RenderTime 
+                        hour = {getHour()}
+                        minute = {getMinute()}
+                        ampm = {getAMPM()}
+                        show_colon = {showColon}
+                        />
+                    </div>
+                    <div className = "date">
+                        {getDate()}
+                    </div>
+                </div>
             </div>
-        
-            
-            <p className = "time-container">
-                <span className = "time-left">
-                    {getTime().split(':')[0]}
-                </span>
-                <span className = {`colon ${showColon ? 'visible' : 'hidden'}`}>:</span>
-                <span className = "time-right">
-                    {getTime().split(':')[1]}
-                </span>
-                <span className = "am-pm">
-                    {getAMPM()}
-                </span>
-                <span className = "date-text">{getDate()}</span>
-            </p>
         </div>
     );
 }
@@ -83,20 +86,24 @@ function getDate(){
     return dayOfWeek[today.getDay()] + " " + (today.getMonth() + 1) + "/" + today.getDate();
 }
 
-function getTime(){
+
+function getHour(){
     const today = new Date();
-    let hour = today.getHours();
+    let hour = today.getHours() % 12;
     if(hour === 0){
         hour = 12;
     }
-    else if(hour > 12){
-        hour = (hour % 13)+1;
-    }
-    return hour + ":" + (today.getMinutes() < 10 ? "0" : "") + today.getMinutes();
+    return hour.toString().padStart(2, '0');
+}
+
+function getMinute(){
+    const today = new Date();
+    let minute = today.getMinutes();
+    return minute.toString().padStart(1,'0');
 }
 
 function getAMPM(){
     const today = new Date();
-    const ampm = today.getHours() >= 12 ? "PM" : "AM";
+    const ampm = today.getHours() >= 12 ? "pm" : "am";
     return ampm;
 }
