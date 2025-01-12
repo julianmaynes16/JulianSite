@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className='home-screen'>
-      <RenderBackground/>
+      <RenderBackground channelState ={channelState}/>
       <PlayMusic channelState ={channelState}/>
       <RenderChannels channelState = {channelState} setChannelState={setChannelState}/>
     </div>

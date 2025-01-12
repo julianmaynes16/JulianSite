@@ -1,15 +1,15 @@
 import { useState, useEffect, useRef } from 'react'
 import "./renderChannels.css"
 import homebrewMenuVideo from './assets/videos/homebrew_menu_2.mp4'
-import channelBackground from './assets/ChannelMask.png'
+import channelBackground from './assets/channel/ChannelMask.png'
 import channeljson from './channelMetadata.json'
 import menuChannelClick from './assets/sounds/ChannelClick.mp3'
 
-import channelSelectBackground from './assets/ChannelSelectBackground.png'
-import channelHoverBorder from './assets/ChannelHoverBorder.png'
+import channelSelectBackground from './assets/channel/ChannelSelectBackground.png'
+import channelHoverBorder from './assets/channel/ChannelHoverBorder.png'
 import menuHoverSound from './assets/sounds/MenuHover.mp3'
 import tooltipSound from './assets/sounds/tooltipSound.mp3'
-import tooltipBackground from './assets/TooltipBackground.png'
+import tooltipBackground from './assets/menu/TooltipBackground.png'
 
 export default function RenderChannels({ channelState, setChannelState }){
     // const channels = [];
@@ -50,36 +50,43 @@ export default function RenderChannels({ channelState, setChannelState }){
     const handleMenuClick = () =>{
         const channel_click_sound = new Audio(menuChannelClick);
         channel_click_sound.play();
-        setChannelState({
-            state: "selected",
-            channel: "Homebrew Channel",
-        })
+        setTimeout(() => {
+            
+            setChannelState({
+                state: "selected",
+                channel: "Homebrew Channel",
+            })
+
+        }, 200);
     }
     return(
-        <div className = "channel-container">
-            <img src = {channelBackground} className = "channel-background"/>
-            <div className = "channel">
-                <video 
-                    width = {channelWidth}
-                    height ={channelHeight}
-                    muted = {true}
-                    autoPlay = {true}
-                    loop = {true}>
-                    <source src = {homebrewMenuVideo} type = "video/mp4" />
-                    Outdated browser!
-                </video>
+        <div>
+            <img src = {channelSelectBackground} className = {`channel-select-background ${channelState.state === "selected" ? "selected" : "unselected"}`}/>
+            <div className = "channel-container">
+                <img src = {channelBackground} className = "channel-background"/>
+                <div className = "channel">
+                    <video 
+                        width = {channelWidth}
+                        height ={channelHeight}
+                        muted = {true}
+                        autoPlay = {true}
+                        loop = {true}>
+                        <source src = {homebrewMenuVideo} type = "video/mp4" />
+                        Outdated browser!
+                    </video>
 
-            </div>
-            <img src = {channelHoverBorder} 
-                 className = {`channel-hover-border ${channelHoverVisible ? "" : "fade-out"}`} 
-                 onMouseEnter = {handleMenuHover} 
-                 onMouseLeave = {handleMenuLeave}
-                 onClick = {handleMenuClick}/>
-            <img src = {channelSelectBackground} className = {`channel-select-background ${channelState === "selected" ? "selected" : "unselected"}`}/>
-            <div className = {`channel-tooltip ${tooltipVisible ? 'visible' : 'hidden'}`}>
-                <img className = {`channel-tooltip-background ${tooltipVisible ? 'visible' : 'hidden'}`}
-                        src = {tooltipBackground}/>
-                <p className = {`channel-tooltip-text ${tooltipVisible ? 'visible' : 'hidden'}`}>Homebrew Channel</p>
+                </div>
+                <img src = {channelHoverBorder} 
+                        className = {`channel-hover-border ${channelHoverVisible ? "" : "fade-out"} ${channelState.state === "selected" ? "selected" : ""}`} 
+                        onMouseEnter = {handleMenuHover} 
+                        onMouseLeave = {handleMenuLeave}
+                        onClick = {handleMenuClick}/>
+                <div className = {`channel-tooltip ${tooltipVisible ? 'visible' : 'hidden'}`}>
+                    <img className = {`channel-tooltip-background ${tooltipVisible ? 'visible' : 'hidden'} ${channelState.state === "selected" ? "selected" : ""}`}
+                            src = {tooltipBackground}/>
+                    <p className = {`channel-tooltip-text ${tooltipVisible ? 'visible' : 'hidden'}`}>Homebrew Channel</p>
+                </div>
+                
             </div>
         </div>
     )

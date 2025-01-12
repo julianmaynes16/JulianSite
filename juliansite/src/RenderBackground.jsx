@@ -1,16 +1,16 @@
 import { useState, useEffect, useRef } from 'react'
 
 import RenderTime from './RenderTime.jsx'
-import homeMenuBottom from './assets/homeMenuBottom.png'
-import homeMenuBackground from './assets/HomeMenuBackground.jpg'
-import MailButton from './assets/MailButton.png'
+import homeMenuBottom from './assets/menu/homeMenuBottom.png'
+import homeMenuBackground from './assets/menu/HomeMenuBackground.jpg'
+import MailButton from './assets/menu/MailButton.png'
 import './renderBackground.css'
 
 import menuHoverSound from './assets/sounds/MenuHover.mp3'
 import tooltipSound from './assets/sounds/tooltipSound.mp3'
-import tooltipBackground from './assets/TooltipBackground.png'
+import tooltipBackground from './assets/menu/TooltipBackground.png'
 
-export default function RenderBackground(){
+export default function RenderBackground({ channelState }){
     const tooltipTime = useRef(null);
     const tooltipShow = useRef(new Audio(tooltipSound));
 
@@ -50,7 +50,7 @@ export default function RenderBackground(){
 
 
     return(
-        <div className = "combined-home-screen">
+        <div className = {`combined-home-screen ${channelState.state}`}>
             <img src = {homeMenuBackground} alt="Background" className = "background"/>
             <div className = "bottom">
                 <img src = {homeMenuBottom} alt="Bottom" className = "home-bottom"/>
@@ -99,7 +99,7 @@ function getHour(){
 function getMinute(){
     const today = new Date();
     let minute = today.getMinutes();
-    return minute.toString().padStart(1,'0');
+    return minute.toString().padStart(2,'0');
 }
 
 function getAMPM(){

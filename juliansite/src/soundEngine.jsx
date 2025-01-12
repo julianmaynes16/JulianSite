@@ -5,7 +5,6 @@ import menuZoomInSound from './assets/sounds/menuZoomInSound.mp3'
 
 export default function PlayMusic({ channelState }){
     const menu_music = useRef(new Audio(homeMenuMusic));
-    console.log(channelState.state);
     useEffect(() => {
         if(channelState.state === "menu"){
             playHomeMenuMusic(menu_music.current);
@@ -33,7 +32,6 @@ function playHomeMenuMusic(menu_music){
 }
 
 function playChannelMusic(menu_music){
-    console.log(!menu_music.paused)
     if(!menu_music.paused){
         menu_music.pause();
     }

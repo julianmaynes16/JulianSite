@@ -45,13 +45,25 @@
     }
 }
 
-.channel-container {
+@keyframes channelSelectBackgroundFadeInScale{
+    from{
+        opacity: 0;
+        z-index: -2;
+    }
+    to{
+        opacity: 1;
+        z-index: 6;
+    }
+}
+
+.channel-container{
     position: relative;
     z-index: 2;
     display: flex;
     align-items: center;
     flex-direction: column; 
 }
+
 
 .channel-background {
     position: absolute;
@@ -66,8 +78,8 @@
 .channel{
     position: relative;
     z-index: 3;
-    mask: url("./assets/ChannelMask.png");
-    -webkit-mask: url("./assets/ChannelMask.png"); 
+    mask: url("./assets/channel/ChannelMask.png");
+    -webkit-mask: url("./assets/channel/ChannelMask.png"); 
     mask-size: 98.5%;
     -webkit-mask-size: 98.5%;
     mask-position: 0px 33px;
@@ -83,35 +95,44 @@
     transform: translate(0%, 16%);
     opacity: 0;
     transition: opacity 0.05s ease-in-out;
-    transform-origin: 50% 160%;
+    transform-origin: 50% 160%; 
 }
 
 .channel-hover-border:hover{
     opacity: 0.65;
 }
 
-.channel-hover-border{
+.channel-hover-border.selected:hover{
+    opacity: 0;
+}
+
+.channel-select-background{
     position: absolute;
-    object-fit: fill;
-    transition: opacity 0.1s ease-in-out;
-    top: 0px;
-    left: 0px;
-    width: 200vw;
-    height: 100vh;
-    z-index: 6;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh; 
+    object-fit: cover;
+    opacity: 0;
+    /*transition: opacity 0.34s ease-in-out; */
 }
 
 .channel-select-background.selected{
-    opacity: 1;
+    /* opacity: 1;
+    z-index: 6; */
+    animation: channelSelectBackgroundFadeInScale  0.29s ease-in-out forwards;;
+    /* animation-delay: 0.22s; */
 }
 
-.channel-select-background.unselected{
-    opacity: 1;
-}
+/* .channel-select-background.unselected{
+    opacity: 0;
+    z-index: -2;
+} */
 
 .channel-hover-border.fade-out{
     animation: channelHoverBorderFadeOut 0.43s ease-in-out forwards;
 }
+
 .channel-tooltip{
     position: absolute;
     z-index: 4;
@@ -166,8 +187,18 @@
     overflow: hidden; */
 }
 
-.channel-tooltip-background.visible{
+.channel-tooltip-background.selected{
     opacity: 1;
+    animation: tooltipFadeInScale 0.2s ease-in-out forwards;
+}
+
+.channel-tooltip-background.visible{
+    opacity: 0;
+    animation: tooltipFadeInScale 0.2s ease-in-out forwards;
+}
+
+.channel-tooltip-background.visible.selected{
+    opacity: 0;
     animation: tooltipFadeInScale 0.2s ease-in-out forwards;
 }
 

@@ -10,6 +10,9 @@
         "Homebrew Channel": {
             "menu_video": "./src/assets/videos/homebrew_menu_1.mp4",
             "select_video": "",
+            "select_video_loop": true,
+            "select_video_start": 8.26,
+            "select_video_end": 24.26,
             "music": "./src/assets/sounds/homebrew_channel_music.mp3",
             "original_video_name": "2024-28 18-21-15.mkv"
         }
