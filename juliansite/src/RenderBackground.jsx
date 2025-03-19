@@ -14,35 +14,37 @@ export default function RenderBackground({ channelState }){
     const tooltipTime = useRef(null);
     const tooltipShow = useRef(new Audio(tooltipSound));
 
-    // const [time,setTime] = useState(getTime());
     const [showColon, setShowColon] = useState(true);
     const [tooltipVisible, setTooltipVisible] = useState(false);
 
+    // Colon flashing every second
     useEffect(() => {
-        // const interval = setInterval(()=> {
-        //     setTime(getTime());
-        // }, 1000);
-
         const colonInterval = setInterval(() => {
             setShowColon((prev)=> !prev);
         }, 1000);
 
         return () => {
-            //clearInterval(interval);
             clearInterval(colonInterval);
         };
     }, []);
 
+    //Hovering over button on bottom bar
     const handleMenuHover = () =>{
+        //Play sound for entering button hitbox
         const music = new Audio(menuHoverSound);
         music.play();
+
         tooltipTime.current = setTimeout(() => {
+            //Play sound for staying in the toolbox for a certain time
             tooltipShow.current.play();
+            //Show tooltip 
             setTooltipVisible(true);
         }, 300);
     };
 
+    //Leaving hitbox of button
     const handleMenuLeave = () =>{
+        //Clear tooltip
         clearTimeout(tooltipTime.current);
         tooltipTime.current = null;
         setTooltipVisible(false);
@@ -51,19 +53,28 @@ export default function RenderBackground({ channelState }){
 
     return(
         <div className = {`combined-home-screen ${channelState.state}`}>
+            {/* White striped background*/}
             <img src = {homeMenuBackground} alt="Background" className = "background"/>
+            
+            {/* Bottom bar */}
             <div className = "bottom">
+
+                {/*Bottom bar image*/}
                 <img src = {homeMenuBottom} alt="Bottom" className = "home-bottom"/>
+                {/* Mail button image */}
                 <img src = {MailButton} alt="Mail" className = "mail-button" onMouseEnter = {handleMenuHover} onMouseLeave = {handleMenuLeave}/>
-                    
+
                 <div className = {`mail-tooltip ${tooltipVisible ? 'visible' : 'hidden'}`}>
+                    {/* Mail Tooltip image */}
                     <img className = {`mail-tooltip-background ${tooltipVisible ? 'visible' : 'hidden'}`}
                             src = {tooltipBackground}/>
+                    {/* Mail tooltip text */}
                     <p className = {`mail-tooltip-text ${tooltipVisible ? 'visible' : 'hidden'}`}>Message Board</p>
                 </div>
 
                 <div className = "time-container">
                     <div className = "time">
+                        {/* hour, minute, am pm rendering */}
                         <RenderTime 
                         hour = {getHour()}
                         minute = {getMinute()}
@@ -71,6 +82,8 @@ export default function RenderBackground({ channelState }){
                         show_colon = {showColon}
                         />
                     </div>
+
+                    {/* Day of week, date render */}
                     <div className = "date">
                         {getDate()}
                     </div>
@@ -79,6 +92,7 @@ export default function RenderBackground({ channelState }){
         </div>
     );
 }
+
 
 function getDate(){
     const dayOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
