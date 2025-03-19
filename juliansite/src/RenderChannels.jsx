@@ -30,7 +30,7 @@ export default function RenderChannels({ channelState, setChannelState }){
     const channelHeight = 240;
 
     //Hovering over a channel
-    const handleMenuHover = () =>{
+    const handleChannelHover = () =>{
         if(channelState.state === "menu"){
             //Play sound for entering hitbox
             const hover_sound = new Audio(menuHoverSound);
@@ -48,7 +48,7 @@ export default function RenderChannels({ channelState, setChannelState }){
     };
     
     //Exiting the channel hitbox
-    const handleMenuLeave = () =>{
+    const handleChannelLeave = () =>{
         //clear tooltip
         clearTimeout(tooltipTime.current);
         tooltipTime.current = null;
@@ -60,7 +60,7 @@ export default function RenderChannels({ channelState, setChannelState }){
     }
 
     //Clicking on channel
-    const handleMenuClick = () =>{
+    const handleChannelClick = () =>{
         //play audio
         const channel_click_sound = new Audio(menuChannelClick);
         channel_click_sound.play();
@@ -82,7 +82,7 @@ export default function RenderChannels({ channelState, setChannelState }){
                 {/* Shape of channel with nothing inside */}
                 <img src = {channelBackground} className = "channel-background"/>
                 {/* Video played in the channel */}
-                <div className = "channel-video">
+                <div className = {`channel-video ${channelSelected ? "selected" : ""}`}>
                     <video 
                         width = {channelWidth}
                         height ={channelHeight}
@@ -97,9 +97,9 @@ export default function RenderChannels({ channelState, setChannelState }){
                 {/* Blue border when hovering over a channel*/}
                 <img src = {channelHoverBorder} 
                         className = {`channel-hover-border ${channelHoverVisible ? "" : "fade-out"} ${channelSelected ? "selected" : ""}`} 
-                        onMouseEnter = {handleMenuHover} 
-                        onMouseLeave = {handleMenuLeave}
-                        onClick = {handleMenuClick}/>
+                        onMouseEnter = {handleChannelHover} 
+                        onMouseLeave = {handleChannelLeave}
+                        onClick = {handleChannelClick}/>
                 
                 {/* Channel tooltip text when hovering over channel */}
                 <div className = {`channel-tooltip ${tooltipVisible ? 'visible' : 'hidden'} ${channelSelected ? "selected" : ""}`}>

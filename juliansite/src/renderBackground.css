@@ -9,6 +9,7 @@
     --channel-select-background-unselected-z: 0;
     --channel-select-background-selected-z: 7;
 }
+
 /*Text fonts*/
 @font-face {
     font-family: 'Rodin';

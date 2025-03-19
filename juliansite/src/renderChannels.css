@@ -1,9 +1,10 @@
 :root {
     --channel-background-z: 2;
-    --channel-video-z: 3;
+    --channel-video-unselected-z: 3;
     --channel-hover-border-z: 4;
     --channel-tooltip-image-z: 5;
     --channel-tooltip-text-z: 6;
+    --channel-video-selected-z: 8;
 }
 
 /*Text fonts*/
@@ -52,6 +53,26 @@
     }
 }
 
+/* Animation for channel expanding when selected*/
+@keyframes channelVideoExpand{
+    from{
+        transform: scale(100%) translate(0%, 0%);
+        mask-size: 98.5%;
+        -webkit-mask-size: 98.5%;
+        mask-position: center;
+        -webkit-mask-position: center;
+        transform-origin: center; 
+    }
+    to{
+        transform: scale(595%) translate(-1.2%, -0.5%);
+        mask-size: 98.5%;
+        -webkit-mask-size: 98.5%;
+        mask-position: center;
+        -webkit-mask-position: center;
+        transform-origin: center; 
+    }
+}
+
 .channel-container{
     position: relative;
     display: flex;
@@ -73,13 +94,18 @@
 
 .channel-video{
     position: relative;
-    z-index: var(--channel-video-z);
+    z-index: var(--channel-video-unselected-z);
     mask: url("./assets/channel/ChannelMask.png");
     -webkit-mask: url("./assets/channel/ChannelMask.png"); 
     mask-size: 98.5%;
     -webkit-mask-size: 98.5%;
     mask-position: 0px 33px;
     -webkit-mask-position: 0px 33px;
+}
+
+.channel-video.selected{
+    z-index: var(--channel-video-selected-z);
+    animation: channelVideoExpand 0.5s ease-in-out forwards;
 }
 
 .channel-hover-border{
