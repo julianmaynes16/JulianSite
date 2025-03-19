@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import "./renderChannels.css"
-import homebrewMenuVideo from './assets/videos/homebrew_menu_2.mp4'
+
+import homebrewBannerVideo from './assets/videos/homebrew_channel_select.mp4'
 import channelBackground from './assets/channel/ChannelMask.png'
 import menuChannelClick from './assets/sounds/ChannelClick.mp3'
 
@@ -89,7 +90,8 @@ export default function RenderChannels({ channelState, setChannelState }){
                         muted = {true}
                         autoPlay = {true}
                         loop = {true}>
-                        <source src = {homebrewMenuVideo} type = "video/mp4" />
+                            {console.log(getChannelVideo(channelState.state, "Homebrew Channel"))}
+                        <source src = {getChannelVideo(channelState.state, "Homebrew Channel")} type = "video/mp4" />
                         Outdated browser!
                     </video>
                 </div>
@@ -112,4 +114,17 @@ export default function RenderChannels({ channelState, setChannelState }){
             </div>
         </div>
     )
+}
+
+//Handles if music needs to loop
+async function getChannelVideo(state, channel){
+    try {
+        const response = await fetch('./channelMetadata.json');
+        const data = await response.json();
+        console.log(state === "menu" ? data["channels"][channel]["menu_video"] : data["channels"][channel]["banner_video"])
+        return state === "menu" ? data["channels"][channel]["menu_video"] : data["channels"][channel]["banner_video"];
+    } catch (error) {
+        console.error('Error fetching channel metadata:', error);
+        return null;
+    }
 }
