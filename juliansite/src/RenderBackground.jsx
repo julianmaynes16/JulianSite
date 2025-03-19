@@ -10,6 +10,8 @@ import menuHoverSound from './assets/sounds/MenuHover.mp3'
 import tooltipSound from './assets/sounds/tooltipSound.mp3'
 import tooltipBackground from './assets/menu/TooltipBackground.png'
 
+import channelSelectBackground from './assets/channel/ChannelSelectBackground.png'
+
 export default function RenderBackground({ channelState }){
     const tooltipTime = useRef(null);
     const tooltipShow = useRef(new Audio(tooltipSound));
@@ -52,40 +54,45 @@ export default function RenderBackground({ channelState }){
 
 
     return(
-        <div className = {`combined-home-screen ${channelState.state}`}>
-            {/* White striped background*/}
-            <img src = {homeMenuBackground} alt="Background" className = "background"/>
-            
-            {/* Bottom bar */}
-            <div className = "bottom">
+        <div>
+            {/* Black background when you select a channel */}
+            <img src = {channelSelectBackground} className = {`channel-select-background ${channelState.state === "selected" ? "selected" : "unselected"}`}/> 
 
-                {/*Bottom bar image*/}
-                <img src = {homeMenuBottom} alt="Bottom" className = "home-bottom"/>
-                {/* Mail button image */}
-                <img src = {MailButton} alt="Mail" className = "mail-button" onMouseEnter = {handleMenuHover} onMouseLeave = {handleMenuLeave}/>
+            <div className = {`combined-home-screen ${channelState.state}`}>
+                {/* White striped background*/}
+                <img src = {homeMenuBackground} alt="Background" className = "background"/>
+                
+                {/* Bottom bar */}
+                <div className = "bottom">
 
-                <div className = {`mail-tooltip ${tooltipVisible ? 'visible' : 'hidden'}`}>
-                    {/* Mail Tooltip image */}
-                    <img className = {`mail-tooltip-background ${tooltipVisible ? 'visible' : 'hidden'}`}
-                            src = {tooltipBackground}/>
-                    {/* Mail tooltip text */}
-                    <p className = {`mail-tooltip-text ${tooltipVisible ? 'visible' : 'hidden'}`}>Message Board</p>
-                </div>
+                    {/*Bottom bar image*/}
+                    <img src = {homeMenuBottom} alt="Bottom" className = "home-bottom"/>
+                    {/* Mail button image */}
+                    <img src = {MailButton} alt="Mail" className = "mail-button" onMouseEnter = {handleMenuHover} onMouseLeave = {handleMenuLeave}/>
 
-                <div className = "time-container">
-                    <div className = "time">
-                        {/* hour, minute, am pm rendering */}
-                        <RenderTime 
-                        hour = {getHour()}
-                        minute = {getMinute()}
-                        ampm = {getAMPM()}
-                        show_colon = {showColon}
-                        />
+                    <div className = {`mail-tooltip ${tooltipVisible ? 'visible' : 'hidden'}`}>
+                        {/* Mail Tooltip image */}
+                        <img className = {`mail-tooltip-background ${tooltipVisible ? 'visible' : 'hidden'}`}
+                                src = {tooltipBackground}/>
+                        {/* Mail tooltip text */}
+                        <p className = {`mail-tooltip-text ${tooltipVisible ? 'visible' : 'hidden'}`}>Message Board</p>
                     </div>
 
-                    {/* Day of week, date render */}
-                    <div className = "date">
-                        {getDate()}
+                    <div className = "time-container">
+                        <div className = "time">
+                            {/* hour, minute, am pm rendering */}
+                            <RenderTime 
+                            hour = {getHour()}
+                            minute = {getMinute()}
+                            ampm = {getAMPM()}
+                            show_colon = {showColon}
+                            />
+                        </div>
+
+                        {/* Day of week, date render */}
+                        <div className = "date">
+                            {getDate()}
+                        </div>
                     </div>
                 </div>
             </div>

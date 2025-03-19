@@ -2,7 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import homeMenuMusic from './assets/sounds/menu_music.mp3';
 import menuZoomInSound from './assets/sounds/menuZoomInSound.mp3'
 
-const ZOOMIN_DELAY = 300;
+const ZOOMIN_DELAY = 100;
 const ZOOMIN_SOUND_DURATION = 522;
 const CHANNEL_MUSIC_START_OFFSET = -40;
 

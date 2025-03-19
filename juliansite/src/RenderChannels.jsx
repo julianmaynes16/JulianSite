@@ -4,7 +4,7 @@ import homebrewMenuVideo from './assets/videos/homebrew_menu_2.mp4'
 import channelBackground from './assets/channel/ChannelMask.png'
 import menuChannelClick from './assets/sounds/ChannelClick.mp3'
 
-import channelSelectBackground from './assets/channel/ChannelSelectBackground.png'
+
 import channelHoverBorder from './assets/channel/ChannelHoverBorder.png'
 import menuHoverSound from './assets/sounds/MenuHover.mp3'
 import tooltipSound from './assets/sounds/tooltipSound.mp3'
@@ -22,6 +22,7 @@ export default function RenderChannels({ channelState, setChannelState }){
 
     const [tooltipVisible, setTooltipVisible] = useState(false);
     const [channelHoverVisible, setChannelHoverVisible] = useState(false);
+    const [channelSelected, setChannelSelected] = useState(false);
     const tooltipTime = useRef(null);
     const tooltipShow = useRef(new Audio(tooltipSound));
 
@@ -51,6 +52,7 @@ export default function RenderChannels({ channelState, setChannelState }){
         //clear tooltip
         clearTimeout(tooltipTime.current);
         tooltipTime.current = null;
+        //clears tooltip and border smoothly
         setTooltipVisible(false);
 
         //remove blue border
@@ -62,27 +64,25 @@ export default function RenderChannels({ channelState, setChannelState }){
         //play audio
         const channel_click_sound = new Audio(menuChannelClick);
         channel_click_sound.play();
-        
+
         //Set the state to the selected channel after a bit
         setTimeout(() => {
-            
+            setChannelSelected(true);
             setChannelState({
                 state: "selected",
                 channel: "Homebrew Channel",
-            })
+            });
 
         }, 200);
     }
     return(
         <div>
-            {/* Black background when you select a channel */}
-            <img src = {channelSelectBackground} className = {`channel-select-background ${channelState.state === "selected" ? "selected" : "unselected"}`}/> 
             <div className = "channel-container">
 
                 {/* Shape of channel with nothing inside */}
                 <img src = {channelBackground} className = "channel-background"/>
                 {/* Video played in the channel */}
-                <div className = "channel">
+                <div className = "channel-video">
                     <video 
                         width = {channelWidth}
                         height ={channelHeight}
@@ -96,15 +96,15 @@ export default function RenderChannels({ channelState, setChannelState }){
 
                 {/* Blue border when hovering over a channel*/}
                 <img src = {channelHoverBorder} 
-                        className = {`channel-hover-border ${channelHoverVisible ? "" : "fade-out"} ${channelState.state === "selected" ? "selected" : ""}`} 
+                        className = {`channel-hover-border ${channelHoverVisible ? "" : "fade-out"} ${channelSelected ? "selected" : ""}`} 
                         onMouseEnter = {handleMenuHover} 
                         onMouseLeave = {handleMenuLeave}
                         onClick = {handleMenuClick}/>
                 
                 {/* Channel tooltip text when hovering over channel */}
-                <div className = {`channel-tooltip ${tooltipVisible ? 'visible' : 'hidden'}`}>
+                <div className = {`channel-tooltip ${tooltipVisible ? 'visible' : 'hidden'} ${channelSelected ? "selected" : ""}`}>
                     {/* Tooltip image */}
-                    <img className = {`channel-tooltip-background ${tooltipVisible ? 'visible' : 'hidden'} ${channelState.state === "selected" ? "selected" : ""}`}
+                    <img className = {`channel-tooltip-background ${tooltipVisible ? 'visible' : 'hidden'}`}
                             src = {tooltipBackground}/>
                     {/* Tooltip text */}
                     <p className = {`channel-tooltip-text ${tooltipVisible ? 'visible' : 'hidden'}`}>Homebrew Channel</p>

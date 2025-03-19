@@ -1,14 +1,15 @@
-/* z index order
--1: Striped background
-0: Home bottom
-1: Mail button, time and date
-2: channel border background
-3: channels
-4: tooltip background
-5: tooltip text
-6: Channel Select Black Background
-*/
-
+:root {
+    --background-z: 0;
+    --menu-bottom-z: 1;
+    --menu-button-image-z: 2;
+    --date-z: 2;
+    --time-z: 2;
+    --menu-button-tooltip-image-z: 5;
+    --menu-button-tooltip-text-z: 6;
+    --channel-select-background-unselected-z: 0;
+    --channel-select-background-selected-z: 7;
+}
+/*Text fonts*/
 @font-face {
     font-family: 'Rodin';
     src: url('./assets/fonts/Rodin.woff');
@@ -19,11 +20,7 @@
     src: url('./assets/fonts/Rodin.otf');
 }
 
-@font-face{
-    font-family: 'Segment';
-    src: url('./assets/fonts/vertopal.com_DSEG7ClassicMini-Bold.woff') format('woff');
-}
-
+/*Animation for tooltip fading in*/
 @keyframes tooltipFadeInScale{
     0% {
         opacity: 0;
@@ -35,6 +32,7 @@
     }
 }
 
+/*Animation for tooltip fading out*/
 @keyframes tooltipFadeOutScale{
     0% {
         opacity: 1;
@@ -46,12 +44,23 @@
     }
 }
 
+/*Animation for background when selecting a channel*/
 @keyframes channelSelectZoomIn{
     0%{
         zoom: 100%;
     }
     100%{
         zoom: 200%;
+    }
+}
+
+/*Animation for background fading to black when channel selected*/
+@keyframes channelSelectBackgroundFadeInScale{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
     }
 }
 
@@ -81,7 +90,7 @@
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    z-index: -1;
+    z-index: var(--background-z);
 }
 
 .bottom{
@@ -101,7 +110,7 @@
     align-items: center;
     justify-content: center;
     box-sizing: border-box; 
-    z-index: 0;
+    z-index: var(--menu-bottom-z);
 }
 
 .mail-button{
@@ -111,7 +120,7 @@
     width: 10%;
     height: 20%;
     box-sizing: border-box;
-    z-index: 1; 
+    z-index: var(--menu-button-image-z); 
     transition: transform 0.125s ease;
 }
 
@@ -121,7 +130,6 @@
 
 .mail-tooltip{
     position: absolute;
-    z-index: 4;
     top: 68.5%;
     left: 77%;
     opacity: 0;
@@ -130,6 +138,7 @@
     align-items: center; 
     animation: tooltipFadeOutScale 0.2s ease-in-out forwards;
     transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+    z-index: var(--menu-button-tooltip-image-z);
     
 }
 
@@ -142,7 +151,7 @@
     position: relative;
     font-family: 'Rodin2', sans-serif;
     color: #656865;
-    z-index: 5;
+    z-index: var(--menu-button-tooltip-text-z);
     font-size: 200%;
     transition: opacity 0.2s ease-in-out;
 }
@@ -164,7 +173,7 @@
     width: 140%;
     height: 80%;
     object-fit: fill;
-    z-index: 3;
+    z-index: var(--menu-button-tooltip-image-z);
     filter: drop-shadow(10px 8px 10px #999899);
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
@@ -182,6 +191,7 @@
 
 .date{
     font-family: 'Rodin', sans-serif;
+    z-index: var(--date-z);
     color: #727472;
     top: 105%;
     font-size: 100%;
@@ -197,14 +207,30 @@
     align-items: center;
     top: 75%; 
     left: 40%; 
-    z-index: 1;
+    z-index: var(--time-z);
     font-size: 4.5rem;
 }
 
 .time{
-    /* color: #8c8d8c; */
     position: absolute;
     top: -15%;
     width: 20%;
+    /* makes gray*/
     filter: invert(40%) sepia(6%) saturate(45%) hue-rotate(71deg) brightness(100%) contrast(92%);
+}
+
+.channel-select-background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh; 
+    object-fit: cover;
+    opacity: 0;
+    z-index: var(--channel-select-background-unselected-z);
+}
+
+.channel-select-background.selected{
+    animation: channelSelectBackgroundFadeInScale  0.29s ease-in-out forwards;
+    z-index: var(--channel-select-background-selected-z);
 }

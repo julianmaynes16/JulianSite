@@ -1,3 +1,12 @@
+:root {
+    --channel-background-z: 2;
+    --channel-video-z: 3;
+    --channel-hover-border-z: 4;
+    --channel-tooltip-image-z: 5;
+    --channel-tooltip-text-z: 6;
+}
+
+/*Text fonts*/
 @font-face {
     font-family: 'Rodin';
     src: url('./assets/fonts/Rodin.woff');
@@ -8,11 +17,7 @@
     src: url('./assets/fonts/Rodin.otf');
 }
 
-@font-face{
-    font-family: 'Segment';
-    src: url('./assets/fonts/vertopal.com_DSEG7ClassicMini-Bold.woff') format('woff');
-}
-
+/*Animation for tooltip fading in*/
 @keyframes tooltipFadeInScale{
     0% {
         opacity: 0;
@@ -24,6 +29,7 @@
     }
 }
 
+/*Animation for tooltip fading out*/
 @keyframes tooltipFadeOutScale{
     0% {
         opacity: 1;
@@ -35,6 +41,7 @@
     }
 }
 
+/*Animation for blue border fading out*/
 @keyframes channelHoverBorderFadeOut{
     from{
         opacity: 0.65;
@@ -45,20 +52,8 @@
     }
 }
 
-@keyframes channelSelectBackgroundFadeInScale{
-    from{
-        opacity: 0;
-        z-index: -2;
-    }
-    to{
-        opacity: 1;
-        z-index: 6;
-    }
-}
-
 .channel-container{
     position: relative;
-    z-index: 2;
     display: flex;
     align-items: center;
     flex-direction: column; 
@@ -67,17 +62,18 @@
 
 .channel-background {
     position: absolute;
-    z-index: 2;
+    z-index: var(--channel-background-z);
     object-fit: fill;
     width: 101%;
     height: 75%;
     transform: translate(-0.7%, 15.8%);
+    /*Makes gray*/
     filter: invert(75%) sepia(11%) saturate(0%) hue-rotate(146deg) brightness(95%) contrast(102%)
 }
 
-.channel{
+.channel-video{
     position: relative;
-    z-index: 3;
+    z-index: var(--channel-video-z);
     mask: url("./assets/channel/ChannelMask.png");
     -webkit-mask: url("./assets/channel/ChannelMask.png"); 
     mask-size: 98.5%;
@@ -88,7 +84,7 @@
 
 .channel-hover-border{
     position: absolute;
-    z-index: 4;
+    z-index: var(--channel-hover-border-z);
     object-fit: fill;
     width: 100%;
     height: 74%;
@@ -102,40 +98,23 @@
     opacity: 0.65;
 }
 
+.channel-hover-border.selected{
+    opacity: 0;
+}
+
 .channel-hover-border.selected:hover{
     opacity: 0;
 }
-
-.channel-select-background{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh; 
-    object-fit: cover;
-    opacity: 0;
-    /*transition: opacity 0.34s ease-in-out; */
-}
-
-.channel-select-background.selected{
-    /* opacity: 1;
-    z-index: 6; */
-    animation: channelSelectBackgroundFadeInScale  0.29s ease-in-out forwards;;
-    /* animation-delay: 0.22s; */
-}
-
-/* .channel-select-background.unselected{
-    opacity: 0;
-    z-index: -2;
-} */
 
 .channel-hover-border.fade-out{
     animation: channelHoverBorderFadeOut 0.43s ease-in-out forwards;
 }
 
+
+
+
 .channel-tooltip{
     position: absolute;
-    z-index: 4;
     top: 78%;
     left: 0%;
     opacity: 0;
@@ -153,11 +132,15 @@
     animation: tooltipFadeInScale 0.2s ease-in-out forwards;
 }
 
+.channel-tooltip.visible.selected{
+    opacity: 0 !important;
+}
+
 .channel-tooltip-text{
     position: relative;
     font-family: 'Rodin2', sans-serif;
     color: #656865;
-    z-index: 5;
+    z-index: var(--channel-tooltip-text-z);
     font-size: 200%;
     transition: opacity 0.2s ease-in-out;
 }
@@ -179,25 +162,13 @@
     width: 140%;
     height: 80%;
     object-fit: fill;
-    z-index: 3;
+    z-index: var(--channel-tooltip-image-z);
     filter: drop-shadow(10px 8px 10px #999899);
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
-    /* white-space: nowrap;
-    overflow: hidden; */
-}
-
-.channel-tooltip-background.selected{
-    opacity: 1;
-    animation: tooltipFadeInScale 0.2s ease-in-out forwards;
 }
 
 .channel-tooltip-background.visible{
-    opacity: 0;
-    animation: tooltipFadeInScale 0.2s ease-in-out forwards;
-}
-
-.channel-tooltip-background.visible.selected{
     opacity: 0;
     animation: tooltipFadeInScale 0.2s ease-in-out forwards;
 }
