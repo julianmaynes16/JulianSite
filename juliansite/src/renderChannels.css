@@ -92,6 +92,7 @@
     filter: invert(75%) sepia(11%) saturate(0%) hue-rotate(146deg) brightness(95%) contrast(102%)
 }
 
+/*TODO: Make mask start at a larger image, downscale for channel mask, and rescale back for select */
 .channel-video{
     position: relative;
     z-index: var(--channel-video-unselected-z);
