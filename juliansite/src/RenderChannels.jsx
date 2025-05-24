@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import "./renderChannels.css"
+import channelMetadata from "./channelMetadata.json"
 
-import homebrewBannerVideo from './assets/videos/homebrew_channel_select.mp4'
 import channelBackground from './assets/channel/ChannelMask.png'
 import menuChannelClick from './assets/sounds/ChannelClick.mp3'
 
@@ -84,14 +84,12 @@ export default function RenderChannels({ channelState, setChannelState }){
                 <img src = {channelBackground} className = "channel-background"/>
                 {/* Video played in the channel */}
                 <div className = {`channel-video ${channelSelected ? "selected" : ""}`}>
-                    <video 
-                        width = {channelWidth}
-                        height ={channelHeight}
-                        muted = {true}
-                        autoPlay = {true}
-                        loop = {true}>
-                            {console.log(getChannelVideo(channelState.state, "Homebrew Channel"))}
-                        <source src = {getChannelVideo(channelState.state, "Homebrew Channel")} type = "video/mp4" />
+                    <video width = {channelWidth} height ={channelHeight} muted = {true} autoPlay = {true}  loop = {true}>
+                            {/*console.log(getChannelVideo(channelState.state, "Homebrew Channel"))*/}
+                        {/* <source src = {getChannelVideo(channelState.state, "Homebrew Channel")} type = "video/mp4" /> */}
+                        {channelMetadata?.["Homebrew Channel"]?.icon && (
+                        <source src={channelMetadata["Homebrew Channel"]["icon"]} type="video/mp4" />
+                        )}
                         Outdated browser!
                     </video>
                 </div>
@@ -120,9 +118,11 @@ export default function RenderChannels({ channelState, setChannelState }){
 async function getChannelVideo(state, channel){
     try {
         const response = await fetch('./channelMetadata.json');
+
         const data = await response.json();
-        console.log(state === "menu" ? data["channels"][channel]["menu_video"] : data["channels"][channel]["banner_video"])
-        return state === "menu" ? data["channels"][channel]["menu_video"] : data["channels"][channel]["banner_video"];
+        console.log("Getting video")
+        console.log(state === "menu" ? data["channels"][channel]["icon"] : data["channels"][channel]["banner"])
+        return state === "menu" ? data["channels"][channel]["icon"] : data["channels"][channel]["banner"].then;
     } catch (error) {
         console.error('Error fetching channel metadata:', error);
         return null;

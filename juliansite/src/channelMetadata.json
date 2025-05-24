@@ -2,7 +2,8 @@
     "channels": {
         "empty":{
             "name" : null,
-            "menu_video": "./src/assets/videos/empty_menu.mp4",
+            "icon": "./src/assets/videos/empty_menu.mp4",
+            "banner": null,
             "select_video": "",
             "music": null,
             "original_video_name": null
@@ -10,11 +11,11 @@
 
         "Homebrew Channel": {
             "name" : "Homebrew Channel", 
-            "menu_video": "./src/assets/videos/homebrew_menu_2.mp4",
-            "banner_video": "./src/assets/videos/homebrew_channel_select.mp4",
-            "banner_video_loop": true,
-            "banner_video_start": 8.26,
-            "banner_video_end": 24.26,
+            "icon": "hbc_i.mp4",
+            "banner": "./src/assets/videos/homebrew_channel_select.mp4",
+            "banner_loop": true,
+            "banner_start": 8.26,
+            "banner_end": 24.26,
             "music": "./src/assets/sounds/homebrew_channel_music.mp3",
             "original_video_name": "2024-28 18-21-15.mkv"
         }
