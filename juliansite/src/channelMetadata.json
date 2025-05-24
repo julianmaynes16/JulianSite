@@ -11,7 +11,7 @@
 
         "Homebrew Channel": {
             "name" : "Homebrew Channel", 
-            "icon": "hbc_i.mp4",
+            "icon": "./src/assets/videos/hbc_i.mp4",
             "banner": "./src/assets/videos/homebrew_channel_select.mp4",
             "banner_loop": true,
             "banner_start": 8.26,

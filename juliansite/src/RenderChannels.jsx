@@ -85,10 +85,11 @@ export default function RenderChannels({ channelState, setChannelState }){
                 {/* Video played in the channel */}
                 <div className = {`channel-video ${channelSelected ? "selected" : ""}`}>
                     <video width = {channelWidth} height ={channelHeight} muted = {true} autoPlay = {true}  loop = {true}>
-                            {/*console.log(getChannelVideo(channelState.state, "Homebrew Channel"))*/}
+                        {console.log(channelMetadata["channels"]["Homebrew Channel"]["icon"])}
+                        {/*console.log(getChannelVideo(channelState.state, "Homebrew Channel"))*/}
                         {/* <source src = {getChannelVideo(channelState.state, "Homebrew Channel")} type = "video/mp4" /> */}
-                        {channelMetadata?.["Homebrew Channel"]?.icon && (
-                        <source src={channelMetadata["Homebrew Channel"]["icon"]} type="video/mp4" />
+                        {channelMetadata["channels"]?.["Homebrew Channel"]?.icon && (
+                        <source src={channelMetadata["channels"]["Homebrew Channel"]["icon"]} type="video/mp4" />
                         )}
                         Outdated browser!
                     </video>
