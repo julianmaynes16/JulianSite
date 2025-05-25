@@ -24,11 +24,18 @@ export default function RenderChannels({ channelState, setChannelState }){
     const [tooltipVisible, setTooltipVisible] = useState(false);
     const [channelHoverVisible, setChannelHoverVisible] = useState(false);
     const [channelSelected, setChannelSelected] = useState(false);
+    const channelVideoRef = useRef(null);
     const tooltipTime = useRef(null);
     const tooltipShow = useRef(new Audio(tooltipSound));
 
     const channelWidth = 320;
     const channelHeight = 240;
+
+    useEffect(() => {
+        if(channelVideoRef.current){
+            channelVideoRef.current.load();
+        }
+    }, [channelState]);
 
     //Hovering over a channel
     const handleChannelHover = () =>{
@@ -84,12 +91,16 @@ export default function RenderChannels({ channelState, setChannelState }){
                 <img src = {channelBackground} className = "channel-background"/>
                 {/* Video played in the channel */}
                 <div className = {`channel-video ${channelSelected ? "selected" : ""}`}>
-                    <video width = {channelWidth} height ={channelHeight} muted = {true} autoPlay = {true}  loop = {true}>
-                        {console.log(channelMetadata["channels"]["Homebrew Channel"]["icon"])}
-                        {/*console.log(getChannelVideo(channelState.state, "Homebrew Channel"))*/}
-                        {/* <source src = {getChannelVideo(channelState.state, "Homebrew Channel")} type = "video/mp4" /> */}
+                    <video 
+                        width = {channelWidth} 
+                        height ={channelHeight} 
+                        muted = {true} 
+                        autoPlay = {true}  
+                        loop = {true}
+                        ref = {channelVideoRef}>
+                    {console.log(getChannelVideo(channelState,"Homebrew Channel"))}
                         {channelMetadata["channels"]?.["Homebrew Channel"]?.icon && (
-                        <source src={channelMetadata["channels"]["Homebrew Channel"]["icon"]} type="video/mp4" />
+                        <source src={getChannelVideo(channelState,"Homebrew Channel")} type="video/mp4" />
                         )}
                         Outdated browser!
                     </video>
@@ -116,16 +127,7 @@ export default function RenderChannels({ channelState, setChannelState }){
 }
 
 //Handles if music needs to loop
-async function getChannelVideo(state, channel){
-    try {
-        const response = await fetch('./channelMetadata.json');
-
-        const data = await response.json();
-        console.log("Getting video")
-        console.log(state === "menu" ? data["channels"][channel]["icon"] : data["channels"][channel]["banner"])
-        return state === "menu" ? data["channels"][channel]["icon"] : data["channels"][channel]["banner"].then;
-    } catch (error) {
-        console.error('Error fetching channel metadata:', error);
-        return null;
-    }
+function getChannelVideo(arg_channelState, channel){
+    //console.log(arg_channelState)
+    return arg_channelState.state === "menu" ? channelMetadata["channels"][channel]["icon"] : channelMetadata["channels"][channel]["banner"];
 }
