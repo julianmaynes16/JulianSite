@@ -1,44 +1,58 @@
 import React, {useEffect, useRef} from 'react';
 import homeMenuMusic from './assets/sounds/menu_music.mp3';
 import menuZoomInSound from './assets/sounds/menuZoomInSound.mp3'
+import channelMetadata from "./channelMetadata.json"
 
 const ZOOMIN_DELAY = 100;
 const ZOOMIN_SOUND_DURATION = 522;
 const CHANNEL_MUSIC_START_OFFSET = -40;
 
+const menu_music = new Audio(homeMenuMusic)
+
 export default function PlayMusic({ channelState }){
-    const menu_music = useRef(new Audio(homeMenuMusic));
     useEffect(() => {
         //If in menu play background music
         if(channelState.state === "menu"){
-            playHomeMenuMusic(menu_music.current);
+            playHomeMenuMusic(menu_music);
         }
         //If selected a channel play its music
-        else{
-            fetch('./channelMetadata.json')
-            .then(response => response.json())
-            .then(data => {
-                playChannelMusic(menu_music.current, data["channels"][channelState.channel]);
-            })
+        else{    
+            playChannelMusic(channelMetadata["channels"][channelState.channel]["music"]);
         }
-        
+
         return () => {
-            menu_music.current.pause();
-            menu_music.current.currentTime = 0;
+        menu_music.pause();
+        menu_music.currentTime = 0;
         };
     }, [channelState]);
-    return null;
+
+    useEffect(() => {
+        function handleKeyDown(e){
+            if(e.key === "m"){
+               playHomeMenuMusic(menu_music); 
+            }
+        }
+    
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+        document.removeEventListener("keydown", handleKeyDown);
+    };
+    }, []);
+
+    
 }
 
 //Playing home menu music
-function playHomeMenuMusic(menu_music){
+function playHomeMenuMusic(){
     menu_music.play();
-    loopControl(menu_music, "menu");
+    loopControl(menu_music, channelMetadata["menu"]);
     return null;
 }
 
 //Playing channel music
-function playChannelMusic(menu_music, channel){
+function playChannelMusic(channel_music){
     //If the menu music is playing, pause it
     if(!menu_music.paused){
         menu_music.pause();
@@ -51,29 +65,25 @@ function playChannelMusic(menu_music, channel){
     }, ZOOMIN_DELAY);
     
     //Play channel music after zoomin sound finishes
-    const channelMusic = new Audio(channel["music"]);
+    const channelMusic = new Audio(channel_music);
         setTimeout(() => {
         channelMusic.play();
-        loopControl(channelMusic, channel["name"]);
+        loopControl(channelMusic, channelMetadata["channels"][channelState.channel]);
     }, ZOOMIN_DELAY + CHANNEL_MUSIC_START_OFFSET  + ZOOMIN_SOUND_DURATION);
 
 }
 
 //Handles if music needs to loop
-function loopControl(music, music_type){
-    //Refers to soundMetadata.json
-    fetch('./soundMetadata.json')
-    .then(response => response.json())
-    .then(data => {
+function loopControl(music, music_source){
+    //If audio needs to loop
+    if(music_source["loop"]){
+        //If music reaches the end then go back to the start of loop
+        music.ontimeupdate = () => {
+            if(music.currentTime >= music_source["end_time"]){
+                music.currentTime = music_source["start_time"];
+            }
+        };
+    }
+};
 
-        //If audio needs to loop
-        if(data[music_type]["loop"]){
-            //If music reaches the end then go back to the start of loop
-            music.ontimeupdate = () => {
-                if(music.currentTime >= data[music_type]["end_time"]){
-                    music.currentTime = data[music_type]["start_time"];
-                }
-            };
-        }
-    });
-}
+
