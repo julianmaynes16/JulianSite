@@ -22,7 +22,7 @@
         "Homebrew Channel": {
             "name" : "Homebrew Channel", 
             "icon": "./src/assets/videos/hbc_i.mp4",
-            "banner": "./src/assets/videos/homebrew_channel_select.mp4",
+            "banner": "./src/assets/videos/hbc_b.mp4",
             "banner_loop": true,
             "banner_start": 8.26,
             "banner_end": 24.26,
