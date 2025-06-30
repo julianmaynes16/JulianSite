@@ -10,6 +10,7 @@ import channelHoverBorder from './assets/channel/ChannelHoverBorder.png'
 import menuHoverSound from './assets/sounds/MenuHover.mp3'
 import tooltipSound from './assets/sounds/tooltipSound.mp3'
 import tooltipBackground from './assets/menu/TooltipBackground.png'
+import channelMenu from './assets/channel/channelMenu.png'
 
 export default function RenderChannels({ channelState, setChannelState }){
     // const channels = [];
@@ -85,44 +86,66 @@ export default function RenderChannels({ channelState, setChannelState }){
     }
     return(
         <div>
-            <div className = "channel-container">
+            <div className = "channel-container-0">
 
                 {/* Shape of channel with nothing inside */}
-                <img src = {channelBackground} className = "channel-background"/>
+                {/* {Array.from({length: 12}, (_, i) => getChannel(0))} */}
+                {/* <img src = {channelBackground} className = "channel-background-0"/>
+                <img src = {channelBackground} className = "channel-background-1"/> */}
                 {/* Video played in the channel */}
-                <div className = {`channel-video ${channelSelected ? "selected" : ""}`}>
-                    <video 
-                        width = {channelWidth} 
-                        height ={channelHeight} 
-                        muted = {true} 
-                        autoPlay = {true}  
-                        loop = {true}
-                        ref = {channelVideoRef}>
-                    {console.log(getChannelVideo(channelState,"Homebrew Channel"))}
-                        {channelMetadata["channels"]?.["Homebrew Channel"]?.icon && (
-                        <source src={getChannelVideo(channelState,"Homebrew Channel")} type="video/mp4" />
-                        )}
-                        Outdated browser!
-                    </video>
-                </div>
+                {/* <div className = {`channel-video ${channelSelected ? "selected" : ""}`}>
+                    <div className = {`icon-banner`}>
+                        <video 
+                            width = {channelWidth} 
+                            height ={channelHeight} 
+                            muted = {true} 
+                            autoPlay = {true}  
+                            loop = {true}
+                            ref = {channelVideoRef}>
+                        {console.log(getChannelVideo(channelState,"Homebrew Channel"))}
+                            {channelMetadata["channels"]?.["Homebrew Channel"]?.icon && (
+                            <source src={getChannelVideo(channelState,"Homebrew Channel")} type="video/mp4" />
+                            )}
+                            Outdated browser!
+                        </video>
+                    </div>
+                    <div className = {'banner-menu'}>
+                        <img src = {channelMenu}/>
+                    </div>
+                </div> */}
 
                 {/* Blue border when hovering over a channel*/}
-                <img src = {channelHoverBorder} 
+                {/* <img src = {channelHoverBorder} 
                         className = {`channel-hover-border ${channelHoverVisible ? "" : "fade-out"} ${channelSelected ? "selected" : ""}`} 
                         onMouseEnter = {handleChannelHover} 
                         onMouseLeave = {handleChannelLeave}
-                        onClick = {handleChannelClick}/>
+                        onClick = {handleChannelClick}/> */}
                 
                 {/* Channel tooltip text when hovering over channel */}
-                <div className = {`channel-tooltip ${tooltipVisible ? 'visible' : 'hidden'} ${channelSelected ? "selected" : ""}`}>
+                {/* <div className = {`channel-tooltip ${tooltipVisible ? 'visible' : 'hidden'} ${channelSelected ? "selected" : ""}`}> */}
                     {/* Tooltip image */}
-                    <img className = {`channel-tooltip-background ${tooltipVisible ? 'visible' : 'hidden'}`}
-                            src = {tooltipBackground}/>
+                    {/* <img className = {`channel-tooltip-background ${tooltipVisible ? 'visible' : 'hidden'}`}
+                            src = {tooltipBackground}/> */}
                     {/* Tooltip text */}
-                    <p className = {`channel-tooltip-text ${tooltipVisible ? 'visible' : 'hidden'}`}>Homebrew Channel</p>
-                </div>
+                    {/* <p className = {`channel-tooltip-text ${tooltipVisible ? 'visible' : 'hidden'}`}>Homebrew Channel</p>
+                </div> */}
+            </div>
+            <div className= "channel-container-1">
+                {/* {Array.from({length: 12}, (_, i) => getChannel(0))} */}
+            </div>
+            <div className= "channel-container-2">
+                
+            </div>
+            <div className= "channel-container-3">
+                
             </div>
         </div>
+    )
+}
+
+function getChannel(id){
+    return (
+        <img src = {channelBackground} className = {`channel-background-${id}`}/>
     )
 }
 

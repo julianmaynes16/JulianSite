@@ -67,15 +67,18 @@ export default function RenderBackground({ channelState }){
 
                     {/*Bottom bar image*/}
                     <img src = {homeMenuBottom} alt="Bottom" className = "home-bottom"/>
-                    {/* Mail button image */}
-                    <img src = {MailButton} alt="Mail" className = "mail-button" onMouseEnter = {handleMenuHover} onMouseLeave = {handleMenuLeave}/>
+                    
+                    <div className="mail">
+                        {/* Mail button image */}
+                        <img src = {MailButton} alt="Mail" className = "mail-button" onMouseEnter = {handleMenuHover} onMouseLeave = {handleMenuLeave}/>
 
-                    <div className = {`mail-tooltip ${tooltipVisible ? 'visible' : 'hidden'}`}>
-                        {/* Mail Tooltip image */}
-                        <img className = {`mail-tooltip-background ${tooltipVisible ? 'visible' : 'hidden'}`}
-                                src = {tooltipBackground}/>
-                        {/* Mail tooltip text */}
-                        <p className = {`mail-tooltip-text ${tooltipVisible ? 'visible' : 'hidden'}`}>Message Board</p>
+                        <div className = {`mail-tooltip ${tooltipVisible ? 'visible' : 'hidden'}`}>
+                            {/* Mail Tooltip image */}
+                            <img className = {`mail-tooltip-background ${tooltipVisible ? 'visible' : 'hidden'}`}
+                                    src = {tooltipBackground}/>
+                            {/* Mail tooltip text */}
+                            <p className = {`mail-tooltip-text ${tooltipVisible ? 'visible' : 'hidden'}`}>Message Board</p>
+                        </div>
                     </div>
 
                     <div className = "time-container">
