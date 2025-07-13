@@ -82,15 +82,13 @@ export default function RenderBackground({ channelState }){
                     </div>
 
                     <div className = "time-container">
-                        <div className = "time">
-                            {/* hour, minute, am pm rendering */}
-                            <RenderTime 
-                            hour = {getHour()}
-                            minute = {getMinute()}
-                            ampm = {getAMPM()}
-                            show_colon = {showColon}
-                            />
-                        </div>
+                        {/* hour, minute, am pm rendering */}
+                        <RenderTime 
+                        hour = {getHour()}
+                        minute = {getMinute()}
+                        ampm = {getAMPM()}
+                        show_colon = {showColon}
+                        />
 
                         {/* Day of week, date render */}
                         <div className = "date">

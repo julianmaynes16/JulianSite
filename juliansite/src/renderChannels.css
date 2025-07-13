@@ -80,7 +80,7 @@
     flex-direction: row;
     gap: 12px;
     bottom: 100px;
-    left: 120px
+    left: 120px;
     /* width: 100%;
     height: 100%; */
     /* align-items: center;
@@ -186,9 +186,6 @@
 .channel-hover-border.fade-out{
     animation: channelHoverBorderFadeOut 0.43s ease-in-out forwards;
 }
-
-
-
 
 .channel-tooltip{
     position: absolute;

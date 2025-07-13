@@ -1,9 +1,3 @@
-.colon{
-    position: absolute;
-    top: 10%;
-    width: 185%;
-    transition: opacity 0.1s ease-in-out;
-}
 
 .colon.false{
     opacity: 0;
@@ -13,38 +7,54 @@
     opacity: 1;
 }
 
-.hour-digit-0{
+.time{
     position: absolute;
+    display: flex;
+    flex-direction: row;
+
+    gap: 0px;
+
+    flex-wrap: nowrap;
+    justify-content: center;
+    
     top: 0%;
-    left: -190%;
-    width: 185%; 
+    left: 0%;
+
+    height: 50%;
+    width: 100%;
+    /* makes gray*/
+    filter: invert(40%) sepia(6%) saturate(45%) hue-rotate(71deg) brightness(100%) contrast(92%);
+}
+
+
+.hour-digit-0{
+    border: 2px solid rebeccapurple;
+    position: relative;
 }
 
 .hour-digit-1{
-    position: absolute;
-    left: -60%;
-    top: -50%;
-    width: 185%; 
+    position: relative;
+    margin-left: -2vw;
+}
+
+.colon{
+    margin-left: -3vw;
+    transition: opacity 0.1s ease-in-out;
 }
 
 .minute-digit-0{
-    position: absolute;
-    left: 150%;
-    top: 0%;
-    width: 185%; 
+    margin-left: -3vw;
 }
 
+
 .minute-digit-1{
-    position: absolute;
-    left: 270%;
-    top: 10%;
-    width: 185%; 
+    margin-left: -2vw;
 }
 
 .am-pm{
-    position: absolute;
+    position: relative;
     left: 450%;
     top: 60%;
     width: 155%;
     transform: translateY(80%)
-}
+}  

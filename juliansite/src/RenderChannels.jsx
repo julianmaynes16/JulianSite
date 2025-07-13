@@ -89,9 +89,9 @@ export default function RenderChannels({ channelState, setChannelState }){
             <div className = "channel-container-0">
 
                 {/* Shape of channel with nothing inside */}
-                {/* {Array.from({length: 12}, (_, i) => getChannel(0))} */}
-                {/* <img src = {channelBackground} className = "channel-background-0"/>
-                <img src = {channelBackground} className = "channel-background-1"/> */}
+                {/*Array.from({length: 11}, (_, i) => getChannel(0))*/}
+                {/*<img src = {channelBackground} className = "channel-background-0"/>*/}
+                {/*<img src = {channelBackground} className = "channel-background-1"/> */}
                 {/* Video played in the channel */}
                 {/* <div className = {`channel-video ${channelSelected ? "selected" : ""}`}>
                     <div className = {`icon-banner`}>

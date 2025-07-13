@@ -32,7 +32,7 @@ const timeDict = {
 
 export default function RenderTime({hour, minute, ampm, show_colon}){
     return(
-        <div>
+        <div className = "time">
             {/* First hour digit, no leading 0 */}
             {hour[0] !== "0" &&
                 <img src = {timeDict[hour[0]]} className = "hour-digit-0"/>
