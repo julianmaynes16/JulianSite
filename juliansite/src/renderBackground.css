@@ -108,7 +108,13 @@
     width: 100vw;
     height: calc((50vw * 9) / 16);
 
-    min-height: ;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+
+    /* min-height: ; */
+
+    justify-content: space-between;
 
     bottom: 0%;
     left: 0;
@@ -118,21 +124,17 @@
     /*Also make center shrink to fit for mobile*/
 }
 
-.home-bottom{ /*Bottom menu bar*/
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    /*Ensure it always scales with viewport resizing*/
-    width: 100%;
-    height: 46.3%;
-    /* display: flex; */
-    /* align-items: center;
-    justify-content: center;
-    box-sizing: border-box;  */
-    /*Positioning*/
+.home-bottom-left{
+    flex: 1;
+}
 
-    /* z-index: var(--menu-bottom-z); */
-    z-index: 0
+.home-bottom-center{
+    flex: 2;
+    height:31.3vh;
+}
+
+.home-bottom-right{
+    flex:1;
 }
 
 .mail{/*Container for all mail elements*/

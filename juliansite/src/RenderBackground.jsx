@@ -1,7 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 
 import RenderTime from './RenderTime.jsx'
-import homeMenuBottom from './assets/menu/homeMenuBottom.png'
+
+import homeMenuBottomLeft from './assets/menu/homeMenuBottomLeft.png'
+import homeMenuBottomCenter from './assets/menu/homeMenuBottomCenter.png'
+import homeMenuBottomRight from './assets/menu/homeMenuBottomRight.png'
+
 import homeMenuBackground from './assets/menu/HomeMenuBackground.jpg'
 import MailButton from './assets/menu/MailButton.png'
 import './renderBackground.css'
@@ -66,7 +70,10 @@ export default function RenderBackground({ channelState }){
                 <div className = "bottom">
 
                     {/*Bottom bar image*/}
-                    <img src = {homeMenuBottom} alt="Bottom" className = "home-bottom"/>
+                    {/* <img src = {homeMenuBottom} alt="Bottom" className = "home-bottom"/> */}
+                    <img src = {homeMenuBottomLeft} alt = "Bottom-Left" className = "home-bottom-left"/>
+                    <img src = {homeMenuBottomCenter} alt = "Bottom-Center" className = "home-bottom-center"/>
+                    <img src = {homeMenuBottomRight} alt = "Bottom-Right" className = "home-bottom-right"/>
                     
                     <div className="mail">
                         {/* Mail button image */}
