@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import './App.css'
-import RenderBackground from './RenderBackground.jsx'
-import PlayMusic from './soundEngine.jsx'
-import RenderChannels from './RenderChannels.jsx'
+import RenderBackground from './menu.jsx'
+import PlayMusic from './sound.jsx'
+import RenderChannels from './channel.jsx'
 
 function App() {
   const [channelState, setChannelState] = useState({
@@ -12,9 +12,9 @@ function App() {
 
   return (
     <div className='home-screen'>
-      <RenderBackground channelState ={channelState}/>
-      <PlayMusic channelState ={channelState}/>
-      <RenderChannels channelState = {channelState} setChannelState={setChannelState}/>
+      <RenderBackground channelState={channelState} />
+      <PlayMusic channelState={channelState} />
+      <RenderChannels channelState={channelState} setChannelState={setChannelState} />
     </div>
   );
 }

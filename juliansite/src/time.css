@@ -1,0 +1,81 @@
+.time-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 75%;
+    left: 40%;
+    z-index: var(--time-z);
+    font-size: 4.5rem;
+}
+
+.time {
+    position: absolute;
+    top: -15%;
+    width: 20%;
+    /* makes gray*/
+    filter: invert(40%) sepia(6%) saturate(45%) hue-rotate(71deg) brightness(100%) contrast(92%);
+}
+
+.date {
+    font-family: 'Rodin', sans-serif;
+    font-weight: 100;
+    z-index: var(--date-z);
+    color: #727472;
+    top: 105%;
+    font-size: 100%;
+    font-weight: bold;
+    white-space: nowrap;
+    transform: translate(20%, 85%);
+}
+
+.colon {
+    position: absolute;
+    top: 10%;
+    width: 185%;
+    transition: opacity 0.1s ease-in-out;
+}
+
+.colon.false {
+    opacity: 0;
+}
+
+.colon.true {
+    opacity: 1;
+}
+
+.hour-digit-0 {
+    position: absolute;
+    top: 0%;
+    left: -190%;
+    width: 185%;
+}
+
+.hour-digit-1 {
+    position: absolute;
+    left: -60%;
+    top: -50%;
+    width: 185%;
+}
+
+.minute-digit-0 {
+    position: absolute;
+    left: 150%;
+    top: 0%;
+    width: 185%;
+}
+
+.minute-digit-1 {
+    position: absolute;
+    left: 270%;
+    top: 10%;
+    width: 185%;
+}
+
+.am-pm {
+    position: absolute;
+    left: 450%;
+    top: 60%;
+    width: 155%;
+    transform: translateY(80%)
+}

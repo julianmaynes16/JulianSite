@@ -19,76 +19,81 @@
 }
 
 /*Animation for tooltip fading in*/
-@keyframes tooltipFadeInScale{
+@keyframes tooltipFadeInScale {
     0% {
         opacity: 0;
         transform: scale(1);
     }
-    100%{
+
+    100% {
         opacity: 1;
         transform: scale(1.1);
     }
 }
 
 /*Animation for tooltip fading out*/
-@keyframes tooltipFadeOutScale{
+@keyframes tooltipFadeOutScale {
     0% {
         opacity: 1;
         transform: scale(1.1);
     }
-    100%{
+
+    100% {
         opacity: 0;
         transform: scale(1);
     }
 }
 
 /*Animation for blue border fading out*/
-@keyframes channelHoverBorderFadeOut{
-    from{
+@keyframes channelHoverBorderFadeOut {
+    from {
         opacity: 0.65;
     }
-    to{
+
+    to {
         opacity: 0;
         transform: scale(0.85);
     }
 }
 
 /* Animation for channel expanding when selected*/
-@keyframes channelVideoExpand{
-    from{
+@keyframes channelVideoExpand {
+    from {
         transform: scale(100%) translate(0%, 0%);
         mask-size: 98.5%;
         -webkit-mask-size: 98.5%;
         mask-position: center;
         -webkit-mask-position: center;
-        transform-origin: center; 
+        transform-origin: center;
     }
-    to{
+
+    to {
         transform: scale(595%) translate(-1.2%, -0.5%);
         mask-size: 98.5%;
         -webkit-mask-size: 98.5%;
         mask-position: center;
         -webkit-mask-position: center;
-        transform-origin: center; 
+        transform-origin: center;
     }
 }
 
-.channel-container-0{
-    position: relative; /*For containing the video within the gray border*/ 
+.channel-container-0 {
+    position: relative;
+    /*For containing the video within the gray border*/
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     gap: 12px;
     bottom: 100px;
     left: 120px
-    /* width: 100%;
+        /* width: 100%;
     height: 100%; */
-    /* align-items: center;
+        /* align-items: center;
     flex-direction: column;  */
 }
 
 
-.channel-background-0{
+.channel-background-0 {
     /* position: absolute; */
     z-index: var(--channel-background-z);
     /* object-fit: fill; */
@@ -101,7 +106,7 @@
     filter: invert(75%) sepia(11%) saturate(0%) hue-rotate(146deg) brightness(95%) contrast(102%)
 }
 
-.channel-background-1{
+.channel-background-1 {
     /* position: absolute; */
     z-index: var(--channel-background-z);
     /* object-fit: fill; */
@@ -116,20 +121,20 @@
 
 
 /*TODO: Make mask start at a larger image, downscale for channel mask, and rescale back for select */
-.channel-video{
+.channel-video {
     position: relative;
     z-index: var(--channel-video-unselected-z);
     width: 101%;
     height: 75%;
     mask: url("./assets/channel/ChannelMask.png");
-    -webkit-mask: url("./assets/channel/ChannelMask.png"); 
+    -webkit-mask: url("./assets/channel/ChannelMask.png");
     mask-size: 98.5%;
     -webkit-mask-size: 98.5%;
     mask-position: 0px 33px;
     -webkit-mask-position: 0px 33px;
 }
 
-.banner-menu{
+.banner-menu {
     position: absolute;
     z-index: 9;
     bottom: 29px;
@@ -145,21 +150,19 @@
     display: flex;
     align-items: center;
     /* object-fit: cover; */
-    flex-direction: column; 
+    flex-direction: column;
     /* overflow: hidden; */
     transform: scale(0.18, 0.18);
 }
 
-.channel-video.selected{
+.channel-video.selected {
     z-index: var(--channel-video-selected-z);
     animation: channelVideoExpand 0.5s ease-in-out forwards;
 }
 
-.icon-banner{
-    
-}
+.icon-banner {}
 
-.channel-hover-border{
+.channel-hover-border {
     position: absolute;
     z-index: var(--channel-hover-border-z);
     object-fit: fill;
@@ -168,29 +171,29 @@
     transform: translate(0%, 16%);
     opacity: 0;
     transition: opacity 0.05s ease-in-out;
-    transform-origin: 50% 160%; 
+    transform-origin: 50% 160%;
 }
 
-.channel-hover-border:hover{
+.channel-hover-border:hover {
     opacity: 0.65;
 }
 
-.channel-hover-border.selected{
+.channel-hover-border.selected {
     opacity: 0;
 }
 
-.channel-hover-border.selected:hover{
+.channel-hover-border.selected:hover {
     opacity: 0;
 }
 
-.channel-hover-border.fade-out{
+.channel-hover-border.fade-out {
     animation: channelHoverBorderFadeOut 0.43s ease-in-out forwards;
 }
 
 
 
 
-.channel-tooltip{
+.channel-tooltip {
     position: absolute;
     top: 78%;
     left: 0%;
@@ -198,22 +201,22 @@
     display: flex;
     width: 312px;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
     animation: tooltipFadeOutScale 0.2s ease-in-out forwards;
     transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
-    
+
 }
 
-.channel-tooltip.visible{
+.channel-tooltip.visible {
     opacity: 1;
     animation: tooltipFadeInScale 0.2s ease-in-out forwards;
 }
 
-.channel-tooltip.visible.selected{
+.channel-tooltip.visible.selected {
     opacity: 0 !important;
 }
 
-.channel-tooltip-text{
+.channel-tooltip-text {
     position: relative;
     font-family: 'Rodin2', sans-serif;
     color: #656865;
@@ -222,17 +225,17 @@
     transition: opacity 0.2s ease-in-out;
 }
 
-.channel-tooltip-text.visible{
+.channel-tooltip-text.visible {
     opacity: 1;
     animation: tooltipFadeInScale 0.2s ease-in-out forwards;
 }
 
-.channel-tooltip-text.hidden{
+.channel-tooltip-text.hidden {
     opacity: 0;
     animation: tooltipFadeOutScale 0.07s ease-in-out forwards;
 }
 
-.channel-tooltip-background{
+.channel-tooltip-background {
     position: absolute;
     transform: translate(-400%, 8%);
     top: 5%;
@@ -245,12 +248,12 @@
     transition: opacity 0.2s ease-in-out;
 }
 
-.channel-tooltip-background.visible{
+.channel-tooltip-background.visible {
     opacity: 0;
     animation: tooltipFadeInScale 0.2s ease-in-out forwards;
 }
 
-.channel-tooltip-background.hidden{
+.channel-tooltip-background.hidden {
     opacity: 0;
     animation: tooltipFadeOutScale 0.07s ease-in-out forwards;
 }
