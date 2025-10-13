@@ -71,18 +71,18 @@ export default function RenderBackground({ channelState }) {
                 {/* Bottom bar */}
                 <div className="bottom">
                     <div className="bottom-bar">
-                        <img src={homeMenuBottomLeft} alt="Bottom-Left" className="bottom-bar-left" />
-                        <img src={homeMenuBottomMiddle} alt="Bottom-Middle" className="bottom-bar-middle" />
-                        <img src={homeMenuBottomRight} alt="Bottom-Right" className="bottom-bar-right" />
-                    </div>
-                    {/* <div className="mail">
-                        <img src={MailButton} alt="Mail" className="mail-button" onMouseEnter={handleMenuHover} onMouseLeave={handleMenuLeave} />
-                        <div className={`mail-tooltip ${tooltipVisible ? 'visible' : 'hidden'}`}>
+                        <img src={homeMenuBottomLeft} alt="Bottom-Left-Bar" className="bottom-bar-left" />
+                        <img src={homeMenuBottomMiddle} alt="Bottom-Middle-Bar" className="bottom-bar-middle" />
+                        <div className="bottom-bar-right-div">
+                            <img src={homeMenuBottomRight} alt="Bottom-Right-Bar" className="bottom-bar-right" />
+                            <img src={MailButton} alt="MailButton" className="mail-button" onMouseEnter={handleMenuHover} onMouseLeave={handleMenuLeave} />
+                        </div>
+                        {/* <div className={`mail-tooltip ${tooltipVisible ? 'visible' : 'hidden'}`}>
                             <img className={`mail-tooltip-background ${tooltipVisible ? 'visible' : 'hidden'}`}
                                 src={tooltipBackground} />
                             <p className={`mail-tooltip-text ${tooltipVisible ? 'visible' : 'hidden'}`}>Message Board</p>
-                        </div>
-                    </div> */}
+                        </div> */}
+                    </div>
 
                     {/*
                     <div className="time-container">
