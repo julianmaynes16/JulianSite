@@ -9,7 +9,7 @@ import homeMenuBottomRight from './assets/menu/homeMenuBottomRight.png'
 import homeMenuBackground from './assets/menu/HomeMenuBackground.jpg'
 import MailButton from './assets/menu/MailButton.png'
 import './menu.css'
-import './mobile.css'
+
 
 import menuHoverSound from './assets/sounds/MenuHover.mp3'
 import tooltipSound from './assets/sounds/tooltipSound.mp3'

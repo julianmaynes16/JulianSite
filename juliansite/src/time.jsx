@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
 import './time.css'
-import './mobile.css'
 
 import timeAM from './assets/time/time_am.png'
 import timePM from './assets/time/time_pm.png'

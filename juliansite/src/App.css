@@ -5,42 +5,55 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+:root {
+  --background-z: 0;
+  --menu-bottom-z: 1;
+  --menu-button-image-z: 2;
+  --date-z: 2;
+  --time-z: 2;
+  --menu-button-tooltip-image-z: 5;
+  --menu-button-tooltip-text-z: 6;
+  --channel-select-background-unselected-z: 0;
+  --channel-select-background-selected-z: 7;
+
+  --bottom-bar-height: 27vh;
+  --mail-button-bottom: 4.5vh;
+  --mail-button-right: 5.8vh;
+
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (max-width: 1100px) {
+  :root {
+    --bottom-bar-height: 15vh;
+    --mail-button-right: 3.1vh;
+    --mail-button-bottom: 2.6vh;
   }
 }
 
-.card {
-  padding: 2em;
+@media (max-width: 560px) {
+  :root {
+    --bottom-bar-height: 13vh
+  }
 }
 
-.read-the-docs {
-  color: #888;
+
+@media (max-width: 490px) {
+  :root {
+    --bottom-bar-height: 10vh;
+    --mail-button-right: 2.1vh;
+    --mail-button-bottom: 1.7vh;
+  }
 }
 
-.home-screen{
-  cursor: url("./assets/cursor/site_cursor.png") 39 0, auto;
+@media (max-width: 410px) {
+  :root {
+    --bottom-bar-height: 8vh;
+    --mail-button-right: 1.7vh;
+    --mail-button-bottom: 1.4vh;
+  }
+}
+
+.home-screen {
+  cursor: url("./assets/cursor/cursor_smaller.png") 39 0, auto;
 }
