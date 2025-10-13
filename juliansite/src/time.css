@@ -1,20 +1,73 @@
-.time-container {
+/* .time-container {
     position: absolute;
     display: flex;
+    border: 2px solid red;
     flex-direction: column;
+    width: 20%;
     align-items: center;
     top: 75%;
     left: 40%;
+
     z-index: var(--time-z);
     font-size: 4.5rem;
-}
+} */
 
 .time {
     position: absolute;
-    top: -15%;
-    width: 20%;
-    /* makes gray*/
+    top: 4%;
+    left: 50%;
+    z-index: var(--time-z);
+    transform: translateX(-50%);
     filter: invert(40%) sepia(6%) saturate(45%) hue-rotate(71deg) brightness(100%) contrast(92%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.hour-digit-0 {
+    position: relative;
+    height: 9vh;
+    left: 24%;
+}
+
+.hour-digit-1 {
+    position: relative;
+    height: 9vh;
+    left: 18%
+}
+
+.colon {
+    position: relative;
+    left: 9%;
+    height: 9vh;
+    transition: opacity 0.1s ease-in-out;
+}
+
+.colon.false {
+    opacity: 0;
+}
+
+.colon.true {
+    opacity: 1;
+}
+
+.minute-digit-0 {
+    position: relative;
+    height: 9vh;
+}
+
+.minute-digit-1 {
+    position: relative;
+    height: 9vh;
+    right: 6%;
+}
+
+.am-pm {
+    position: relative;
+    height: 9vh;
+    right: 6%;
 }
 
 .date {
@@ -27,55 +80,4 @@
     font-weight: bold;
     white-space: nowrap;
     transform: translate(20%, 85%);
-}
-
-.colon {
-    position: absolute;
-    top: 10%;
-    width: 185%;
-    transition: opacity 0.1s ease-in-out;
-}
-
-.colon.false {
-    opacity: 0;
-}
-
-.colon.true {
-    opacity: 1;
-}
-
-.hour-digit-0 {
-    position: absolute;
-    top: 0%;
-    left: -190%;
-    width: 185%;
-}
-
-.hour-digit-1 {
-    position: absolute;
-    left: -60%;
-    top: -50%;
-    width: 185%;
-}
-
-.minute-digit-0 {
-    position: absolute;
-    left: 150%;
-    top: 0%;
-    width: 185%;
-}
-
-.minute-digit-1 {
-    position: absolute;
-    left: 270%;
-    top: 10%;
-    width: 185%;
-}
-
-.am-pm {
-    position: absolute;
-    left: 450%;
-    top: 60%;
-    width: 155%;
-    transform: translateY(80%)
 }

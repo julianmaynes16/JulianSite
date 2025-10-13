@@ -8,6 +8,11 @@
     --menu-button-tooltip-text-z: 6;
     --channel-select-background-unselected-z: 0;
     --channel-select-background-selected-z: 7;
+
+    --bottom-bar-height: 27vh;
+    --mail-button-bottom: 4.5vh;
+    --mail-button-right: 5.8vh;
+
 }
 
 /*Text fonts*/
@@ -111,7 +116,7 @@
 
 .bottom-bar {
     display: flex;
-    height: 27vh;
+    height: var(--bottom-bar-height);
     width: 100vw;
 }
 
@@ -122,9 +127,16 @@
     /*Counteracts weird 1px flexbox gap*/
 }
 
-.bottom-bar-middle {
+.bottom-bar-middle-div {
     position: relative;
     flex-grow: 1;
+    justify-content: center;
+    border: 2px solid red;
+}
+
+.bottom-bar-middle {
+    height: 100%;
+    width: 100%;
 }
 
 .bottom-bar-right-div {
@@ -140,8 +152,8 @@
 
 .mail-button {
     position: absolute;
-    right: 5.8vh;
-    bottom: 4.5vh;
+    right: var(--mail-button-right);
+    bottom: var(--mail-button-bottom);
     height: 65%;
 
     z-index: var(--menu-button-image-z);
@@ -153,48 +165,6 @@
     /*Animation for making button larger*/
     transform: scale(1.08);
 }
-
-/*The following scale the bottom bar with screen width (MOBILE)*/
-@media (max-width: 1100px) {
-    .bottom-bar {
-        height: 15vh;
-    }
-
-    .mail-button {
-        right: 3.1vh;
-        bottom: 2.6vh;
-    }
-}
-
-@media (max-width: 560px) {
-    .bottom-bar {
-        height: 13vh;
-    }
-}
-
-
-@media (max-width: 490px) {
-    .bottom-bar {
-        height: 10vh;
-    }
-
-    .mail-button {
-        right: 2.1vh;
-        bottom: 1.7vh;
-    }
-}
-
-@media (max-width: 410px) {
-    .bottom-bar {
-        height: 8vh;
-    }
-
-    .mail-button {
-        right: 1.7vh;
-        bottom: 1.4vh;
-    }
-}
-
 
 .mail-tooltip {
     /*Positioning above  buttom*/

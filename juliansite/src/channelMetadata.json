@@ -1,26 +1,25 @@
 {
-    "menu":{
-        "volume" : 1,
-        "loop" : true,
-        "start_time" : 3.479,
-        "end_time" : 67.976
+    "menu": {
+        "volume": 1,
+        "loop": true,
+        "start_time": 3.479,
+        "end_time": 67.976
     },
-    
     "channels": {
-        "empty":{
-            "name" : null,
+        "empty": {
+            "name": null,
             "icon": "./src/assets/videos/empty_menu.mp4",
             "banner": null,
             "select_video": "",
             "music": null,
             "volume": null,
-            "music_loop" : false,
-            "start_time" : null,
-            "end_time" : null
+            "music_loop": false,
+            "start_time": null,
+            "end_time": null,
+            "link": null
         },
-
         "Homebrew Channel": {
-            "name" : "Homebrew Channel", 
+            "name": "Homebrew Channel",
             "icon": "./src/assets/videos/hbc_i.mp4",
             "banner": "./src/assets/videos/hbc_b.mp4",
             "banner_loop": true,
@@ -28,9 +27,10 @@
             "banner_end": 24.26,
             "music": "./src/assets/sounds/homebrew_channel_music.mp3",
             "volume": 1,
-            "music_loop" : true,
-            "start_time" : 8.6133,
-            "end_time" : 16.861
+            "music_loop": true,
+            "start_time": 8.6133,
+            "end_time": 16.861,
+            "link": null
         }
     }
 }

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import './time.css'
+import './mobile.css'
 
 import timeAM from './assets/time/time_am.png'
 import timePM from './assets/time/time_pm.png'
@@ -30,28 +31,55 @@ const timeDict = {
     "pm": timePM
 }
 
-export default function RenderTime({ hour, minute, ampm, show_colon }) {
+export default function RenderTime({ show_colon }) {
+    const hour = getHour();
+    const minute = getMinute();
+    const ampm = getAMPM();
     return (
-        <div>
-            {/* First hour digit, no leading 0 */}
+        <div className="time">
             {hour[0] !== "0" &&
                 <img src={timeDict[hour[0]]} className="hour-digit-0" />
             }
 
-            {/* Second hour digit */}
+            {/* <img src={timeDict[hour[0]]} className="hour-digit-0" /> */}
+
             <img src={timeDict[hour[1]]} className="hour-digit-1" />
 
-            {/* Colon, flashing */}
             <img src={timeColon} className={`colon ${show_colon}`} />
 
-            {/* First minute digit */}
             <img src={timeDict[minute[0]]} className="minute-digit-0" />
 
-            {/* Second minute Digit */}
             <img src={timeDict[minute[1]]} className="minute-digit-1" />
 
-            {/* AM PM */}
             <img src={timeDict[ampm]} className="am-pm" />
         </div>
     )
+}
+
+function getDate() {
+    const dayOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const today = new Date();
+    return dayOfWeek[today.getDay()] + " " + (today.getMonth() + 1) + "/" + today.getDate();
+}
+
+
+function getHour() {
+    const today = new Date();
+    let hour = today.getHours() % 12;
+    if (hour === 0) {
+        hour = 12;
+    }
+    return hour.toString().padStart(2, '0');
+}
+
+function getMinute() {
+    const today = new Date();
+    let minute = today.getMinutes();
+    return minute.toString().padStart(2, '0');
+}
+
+function getAMPM() {
+    const today = new Date();
+    const ampm = today.getHours() >= 12 ? "pm" : "am";
+    return ampm;
 }

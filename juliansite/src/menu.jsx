@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 
 import RenderTime from './time.jsx'
-//import homeMenuBottom from './assets/menu/homeMenuBottom.png'
 
 import homeMenuBottomLeft from './assets/menu/homeMenuBottomLeft.png'
 import homeMenuBottomMiddle from './assets/menu/homeMenuBottomMiddle.png'
@@ -10,7 +9,7 @@ import homeMenuBottomRight from './assets/menu/homeMenuBottomRight.png'
 import homeMenuBackground from './assets/menu/HomeMenuBackground.jpg'
 import MailButton from './assets/menu/MailButton.png'
 import './menu.css'
-import './time.css'
+import './mobile.css'
 
 import menuHoverSound from './assets/sounds/MenuHover.mp3'
 import tooltipSound from './assets/sounds/tooltipSound.mp3'
@@ -65,14 +64,16 @@ export default function RenderBackground({ channelState }) {
             {/* <img src={channelSelectBackground} className={`channel-select-background ${channelState.state === "selected" ? "selected" : "unselected"}`} /> */}
 
             <div className={`combined-home-screen ${channelState.state}`}>
-                {/* White striped background*/}
                 <img src={homeMenuBackground} alt="Background" className="background" />
 
-                {/* Bottom bar */}
                 <div className="bottom">
                     <div className="bottom-bar">
                         <img src={homeMenuBottomLeft} alt="Bottom-Left-Bar" className="bottom-bar-left" />
-                        <img src={homeMenuBottomMiddle} alt="Bottom-Middle-Bar" className="bottom-bar-middle" />
+                        <div className="bottom-bar-middle-div">
+                            <img src={homeMenuBottomMiddle} alt="Bottom-Middle-Bar" className="bottom-bar-middle" />
+                            <RenderTime show_colon={showColon} />
+                            {/* // {getDate()} */}
+                        </div>
                         <div className="bottom-bar-right-div">
                             <img src={homeMenuBottomRight} alt="Bottom-Right-Bar" className="bottom-bar-right" />
                             <img src={MailButton} alt="MailButton" className="mail-button" onMouseEnter={handleMenuHover} onMouseLeave={handleMenuLeave} />
@@ -84,22 +85,8 @@ export default function RenderBackground({ channelState }) {
                         </div> */}
                     </div>
 
-                    {/*
-                    <div className="time-container">
-                        <div className="time">
-                            <RenderTime
-                                hour={getHour()}
-                                minute={getMinute()}
-                                ampm={getAMPM()}
-                                show_colon={showColon}
-                            />
-                        </div>
 
-                        <div className="date">
-                            {getDate()}
-                        </div>
-                    </div>
-                    */}
+
                 </div>
             </div>
         </div>
@@ -107,30 +94,3 @@ export default function RenderBackground({ channelState }) {
 }
 
 
-function getDate() {
-    const dayOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    const today = new Date();
-    return dayOfWeek[today.getDay()] + " " + (today.getMonth() + 1) + "/" + today.getDate();
-}
-
-
-function getHour() {
-    const today = new Date();
-    let hour = today.getHours() % 12;
-    if (hour === 0) {
-        hour = 12;
-    }
-    return hour.toString().padStart(2, '0');
-}
-
-function getMinute() {
-    const today = new Date();
-    let minute = today.getMinutes();
-    return minute.toString().padStart(2, '0');
-}
-
-function getAMPM() {
-    const today = new Date();
-    const ampm = today.getHours() >= 12 ? "pm" : "am";
-    return ampm;
-}
