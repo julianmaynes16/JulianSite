@@ -22,26 +22,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 
 .hour-digit-0 {
     position: relative;
-    height: 9vh;
+    height: var(--time-digit-height);
     left: 24%;
 }
 
 .hour-digit-1 {
     position: relative;
-    height: 9vh;
+    height: var(--time-digit-height);
     left: 18%
 }
 
 .colon {
     position: relative;
+    height: var(--time-digit-height);
     left: 9%;
-    height: 9vh;
     transition: opacity 0.1s ease-in-out;
 }
 
@@ -55,18 +54,18 @@
 
 .minute-digit-0 {
     position: relative;
-    height: 9vh;
+    height: var(--time-digit-height);
 }
 
 .minute-digit-1 {
     position: relative;
-    height: 9vh;
+    height: var(--time-digit-height);
     right: 6%;
 }
 
 .am-pm {
     position: relative;
-    height: 9vh;
+    height: var(--time-digit-height);
     right: 6%;
 }
 
