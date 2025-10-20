@@ -5,20 +5,34 @@
         "start_time": 3.479,
         "end_time": 67.976
     },
-    "channels": {
-        "empty": {
-            "name": null,
+    "channels": [
+        {
+            "name": "Disc Channel",
             "icon": "./src/assets/videos/empty_menu.mp4",
             "banner": null,
-            "select_video": "",
+            "select_video": null,
             "music": null,
             "volume": null,
             "music_loop": false,
-            "start_time": null,
-            "end_time": null,
+            "music_start": null,
+            "music_end": null,
             "link": null
         },
-        "Homebrew Channel": {
+        {
+            "name": "Julian Maynes",
+            "icon": null,
+            "banner": null,
+            "banner_loop": false,
+            "banner_start": false,
+            "banner_end": false,
+            "music": null,
+            "volume": 1,
+            "music_loop": false,
+            "music_start": null,
+            "music_end": null,
+            "link": null
+        },
+        {
             "name": "Homebrew Channel",
             "icon": "./src/assets/videos/hbc_i.mp4",
             "banner": "./src/assets/videos/hbc_b.mp4",
@@ -28,9 +42,21 @@
             "music": "./src/assets/sounds/homebrew_channel_music.mp3",
             "volume": 1,
             "music_loop": true,
-            "start_time": 8.6133,
-            "end_time": 16.861,
+            "music_start": 8.6133,
+            "music_end": 16.861,
+            "link": null
+        },
+        {
+            "name": null,
+            "icon": "./src/assets/videos/empty_menu.mp4",
+            "banner": null,
+            "select_video": null,
+            "music": null,
+            "volume": null,
+            "music_loop": false,
+            "music_start": null,
+            "music_end": null,
             "link": null
         }
-    }
+    ]
 }

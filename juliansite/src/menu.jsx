@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 
-import RenderTime from './time.jsx'
+import RenderTime, { RenderDate } from './time.jsx'
 
 import homeMenuBottomLeft from './assets/menu/homeMenuBottomLeft.png'
 import homeMenuBottomMiddle from './assets/menu/homeMenuBottomMiddle.png'
@@ -13,11 +13,10 @@ import './menu.css'
 
 import menuHoverSound from './assets/sounds/MenuHover.mp3'
 import tooltipSound from './assets/sounds/tooltipSound.mp3'
-import tooltipBackground from './assets/menu/TooltipBackground.png'
 
 import channelSelectBackground from './assets/channel/ChannelSelectBackground.png'
 
-export default function RenderBackground({ channelState }) {
+export default function Menu({ channelState }) {
     const tooltipTime = useRef(null);
     const tooltipShow = useRef(new Audio(tooltipSound));
 
@@ -72,7 +71,7 @@ export default function RenderBackground({ channelState }) {
                         <div className="bottom-bar-middle-div">
                             <img src={homeMenuBottomMiddle} alt="Bottom-Middle-Bar" className="bottom-bar-middle" />
                             <RenderTime show_colon={showColon} />
-                            {/* // {getDate()} */}
+                            <RenderDate />
                         </div>
                         <div className="bottom-bar-right-div">
                             <img src={homeMenuBottomRight} alt="Bottom-Right-Bar" className="bottom-bar-right" />
@@ -84,9 +83,6 @@ export default function RenderBackground({ channelState }) {
                             <p className={`mail-tooltip-text ${tooltipVisible ? 'visible' : 'hidden'}`}>Message Board</p>
                         </div> */}
                     </div>
-
-
-
                 </div>
             </div>
         </div>

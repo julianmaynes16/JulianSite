@@ -40,8 +40,6 @@ export default function RenderTime({ show_colon }) {
                 <img src={timeDict[hour[0]]} className="hour-digit-0" />
             }
 
-            {/* <img src={timeDict[hour[0]]} className="hour-digit-0" /> */}
-
             <img src={timeDict[hour[1]]} className="hour-digit-1" />
 
             <img src={timeColon} className={`colon ${show_colon}`} />
@@ -53,6 +51,14 @@ export default function RenderTime({ show_colon }) {
             <img src={timeDict[ampm]} className="am-pm" />
         </div>
     )
+}
+
+export function RenderDate() {
+    return (
+        <div>
+            <p className='date'> {getDate()} </p>
+        </div>
+    );
 }
 
 function getDate() {

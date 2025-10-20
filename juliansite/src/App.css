@@ -23,6 +23,12 @@
 
   --time-digit-height: 9vh;
 
+  --date-font-size: 300%;
+
+  --ib-aspect-ratio: 170/96;
+  /*This is for icon*/
+  /* --ib-aspect-ratio: 832/456; THIS IS FOR THE BANNER*/
+
 }
 
 
@@ -34,12 +40,15 @@
     --mail-button-bottom: 2.6vh;
 
     --time-digit-height: 5vh;
+
+    --date-font-size: 210%;
   }
 }
 
 @media (max-width: 560px) {
   :root {
-    --bottom-bar-height: 13vh
+    --bottom-bar-height: 13vh;
+    --date-font-size: 110%;
   }
 }
 
@@ -52,6 +61,8 @@
     --mail-button-bottom: 1.7vh;
 
     --time-digit-height: 3vh;
+
+    --date-font-size: 100%;
   }
 }
 
@@ -61,6 +72,8 @@
 
     --mail-button-right: 1.7vh;
     --mail-button-bottom: 1.4vh;
+
+    --date-font-size: 75%;
   }
 }
 
