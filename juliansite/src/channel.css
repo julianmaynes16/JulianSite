@@ -79,7 +79,6 @@
 }
 
 .channel-container.menu {
-    border: 2px solid red;
     position: relative;
     width: 47vh;
     aspect-ratio: 170/96;
@@ -94,7 +93,7 @@
     filter: invert(75%) sepia(11%) saturate(0%) hue-rotate(146deg) brightness(95%) contrast(102%)
 }
 
-.video {
+.icon-video {
     position: absolute;
     z-index: var(--channel-video-unselected-z);
     width: 100%;
@@ -151,12 +150,59 @@
 }
 
 .channel-container.selected {
-    border: 2px solid green;
-    position: relative;
-    width: 47vh;
     aspect-ratio: 832/456;
+    /* width: 47vh; */
+    width: 70vh;
 }
 
+.banner-container {
+    display: flex;
+    flex-direction: column;
+
+    mask: url("./assets/channel/ChannelMaskBanner.png");
+    mask-size: 100% 98%;
+    mask-position: 0% 0%;
+    mask-repeat: no-repeat;
+}
+
+.banner {
+    position: relative;
+    width: 100%;
+}
+
+.banner-div {
+    position: relative;
+    top: -2px;
+}
+
+.banner-menu-background {
+    position: relative;
+    width: 100%;
+}
+
+.banner-menu-start {
+    position: absolute;
+    width: 30%;
+    top: 13.5%;
+    right: 18%;
+    transition: transform 0.125s ease;
+}
+
+.banner-menu-start:hover {
+    transform: scale(1.08);
+}
+
+.banner-menu-menu {
+    position: absolute;
+    width: 30%;
+    top: 13.5%;
+    left: 18%;
+    transition: transform 0.125s ease;
+}
+
+.banner-menu-menu:hover {
+    transform: scale(1.08);
+}
 
 .channel-background-1 {
     /* position: absolute; */

@@ -12,6 +12,9 @@ import tooltipSound from './assets/sounds/tooltipSound.mp3'
 import channelMenu from './assets/channel/channelMenu.png'
 import channelSelectBackground from './assets/channel/ChannelSelectBackground.png'
 
+import channelStartButton from './assets/channel/channelStartButton.png'
+import channelMenuButton from './assets/channel/channelMenuButton.png'
+
 
 
 export default function Channel({ id, channelState, setChannelState }) {
@@ -85,9 +88,7 @@ export default function Channel({ id, channelState, setChannelState }) {
                 <div>
                     <img src={channelBackground} className="channel-background" />
                     <video
-                        className="video"
-                        width={320}
-                        height={240}
+                        className="icon-video"
                         muted={true}
                         autoPlay={true}
                         loop={true}>
@@ -102,12 +103,23 @@ export default function Channel({ id, channelState, setChannelState }) {
                 </div>
             }
             {channelState.state == "selected" &&
-                <div>
-                    <img src={channelSelectBackground}
-                        className="select-background" />
-                    <div className="banner">
-
+                <div className="banner-container">
+                    <video className="banner"
+                        autoPlay={true}
+                        src={channelMetadata["channels"][id]["banner"]}>
+                        "Outdated browser!"
+                    </video>
+                    <div className="banner-div">
+                        <img src={channelMenu}
+                            className="banner-menu-background" />
+                        <img src={channelStartButton}
+                            className="banner-menu-start" />
+                        <img src={channelMenuButton}
+                            className="banner-menu-menu" />
                     </div>
+                    {/* <div className="banner-menu">
+                    </div> */}
+
                 </div>
 
             }

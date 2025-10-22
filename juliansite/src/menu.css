@@ -144,7 +144,6 @@
 }
 
 .mail-button:hover {
-    /*Animation for making button larger*/
     transform: scale(1.08);
 }
 

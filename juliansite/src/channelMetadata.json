@@ -10,7 +10,6 @@
             "name": "Disc Channel",
             "icon": "./src/assets/videos/empty_menu.mp4",
             "banner": null,
-            "select_video": null,
             "music": null,
             "volume": null,
             "music_loop": false,
