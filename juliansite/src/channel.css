@@ -59,7 +59,7 @@
 
 /* Animation for channel expanding when selected*/
 @keyframes channelVideoExpand {
-    from {
+    /* from {
         transform: scale(100%) translate(0%, 0%);
         mask-size: 98.5%;
         -webkit-mask-size: 98.5%;
@@ -75,12 +75,12 @@
         mask-position: center;
         -webkit-mask-position: center;
         transform-origin: center;
-    }
+    } */
 }
 
 .channel-container.menu {
     position: relative;
-    width: 47vh;
+    width: 30vh;
     aspect-ratio: 170/96;
 }
 
@@ -172,7 +172,7 @@
 
 .banner-div {
     position: relative;
-    top: -2px;
+    top: -3px;
 }
 
 .banner-menu-background {

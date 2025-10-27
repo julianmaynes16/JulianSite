@@ -21,7 +21,7 @@ export default function Channel({ id, channelState, setChannelState }) {
 
     // const [tooltipVisible, setTooltipVisible] = useState(false);
     const [hoverVisible, setHoverVisible] = useState(false);
-    const [channelSelected, setChannelSelected] = useState(false);
+    // const [channelSelected, setChannelSelected] = useState(false);
     // const channelVideoRef = useRef(null);
     // const tooltipTime = useRef(null);
     // const tooltipShow = useRef(new Audio(tooltipSound));
@@ -72,10 +72,10 @@ export default function Channel({ id, channelState, setChannelState }) {
 
         //Set the state to the selected channel after a bit
         setTimeout(() => {
-            setChannelSelected(true);
+            // setChannelSelected(true);
             setChannelState({
                 state: "selected",
-                channel: "Homebrew Channel",
+                channel: id,
             });
 
         }, 200);
@@ -96,7 +96,7 @@ export default function Channel({ id, channelState, setChannelState }) {
                         Outdated browser!
                     </video>
                     <img src={channelHoverBorder}
-                        className={`hover-border ${hoverVisible ? "" : "fade-out"} ${channelSelected ? "selected" : ""}`}
+                        className={`hover-border ${hoverVisible ? "" : "fade-out"} ${channelState.state == "selected" ? "selected" : ""}`}
                         onMouseEnter={handleChannelHover}
                         onMouseLeave={handleChannelLeave}
                         onClick={handleChannelClick} />

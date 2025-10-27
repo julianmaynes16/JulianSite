@@ -19,7 +19,7 @@
         },
         {
             "name": "Julian Maynes",
-            "icon": null,
+            "icon": "./src/assets/videos/empty_menu.mp4",
             "banner": null,
             "banner_loop": false,
             "banner_start": false,

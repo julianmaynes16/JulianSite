@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import Menu from './menu.jsx'
 import PlayMusic from './sound.jsx'
-import Channel from './channel.jsx'
+import ChannelGrid from './channel_grid.jsx'
 
 function App() {
   const [channelState, setChannelState] = useState({
@@ -14,7 +14,7 @@ function App() {
     <div className='home-screen'>
       <Menu channelState={channelState} />
       <PlayMusic channelState={channelState} />
-      <Channel id={2} channelState={channelState} setChannelState={setChannelState} />
+      <ChannelGrid channelState={channelState} setChannelState={setChannelState} />
     </div>
   );
 }
