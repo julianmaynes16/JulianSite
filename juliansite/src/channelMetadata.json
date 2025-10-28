@@ -57,5 +57,8 @@
             "music_end": null,
             "link": null
         }
-    ]
+    ],
+    "const": {
+        "number_of_pages": 4
+    }
 }

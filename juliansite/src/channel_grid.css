@@ -1,4 +1,38 @@
-.channel-grid {
+.channels-container {
+    position: absolute;
+    left: -10vw;
+    top: 8vh;
+    width: 120vw;
+    height: 65vh;
     display: flex;
+    justify-content: center;
+    overflow: hidden;
+    /* width: 100vw;
+    height: 500px; */
+
+
+}
+
+.channel-grid {
+    position: relative;
+    /* margin: auto; */
+    display: flex;
+    height: 100%;
     flex-wrap: wrap;
+    width: 80vw;
+    align-content: center;
+    justify-content: center;
+    gap: 0.5vh 0.5vh;
+
+}
+
+
+.channel-column {
+    position: relative;
+    gap: 0.5vh;
+    width: var(--channel-width);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
 }

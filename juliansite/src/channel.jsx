@@ -18,7 +18,7 @@ import channelMenuButton from './assets/channel/channelMenuButton.png'
 
 
 export default function Channel({ id, channelState, setChannelState }) {
-
+    const channel = useRef(null);
     // const [tooltipVisible, setTooltipVisible] = useState(false);
     const [hoverVisible, setHoverVisible] = useState(false);
     // const [channelSelected, setChannelSelected] = useState(false);
@@ -36,8 +36,7 @@ export default function Channel({ id, channelState, setChannelState }) {
     // }, [channelState]);
 
     const handleChannelHover = () => {
-        if (channelState.state === "menu") {
-            //Play sound for entering hitbox
+        if (channelState.state === "menu" && channelMetadata.channels[id].name != null) {
             const hover_sound = new Audio(menuHoverSound);
             hover_sound.play();
 
@@ -61,28 +60,37 @@ export default function Channel({ id, channelState, setChannelState }) {
         // setTooltipVisible(false);
 
         //remove blue border
-        setHoverVisible(false);
+        if (channelMetadata.channels[id].name != null) {
+            setHoverVisible(false);
+        }
     }
 
     //Clicking on channel
     const handleChannelClick = () => {
+        const rect = channel.current.getBoundingClientRect();
+        console.log("location:", (rect.left + rect.right) / 2, (rect.top + rect.bottom) / 2);
+
         //play audio
-        const channel_click_sound = new Audio(menuChannelClick);
-        channel_click_sound.play();
+        if (channelMetadata.channels[id].name != null) {
+            const channel_click_sound = new Audio(menuChannelClick);
+            channel_click_sound.play();
 
-        //Set the state to the selected channel after a bit
-        setTimeout(() => {
-            // setChannelSelected(true);
-            setChannelState({
-                state: "selected",
-                channel: id,
-            });
+            //Set the state to the selected channel after a bit
+            setTimeout(() => {
+                // setChannelSelected(true);
+                setChannelState({
+                    state: "selected",
+                    channel: id,
 
-        }, 200);
+                });
+
+            }, 200);
+        }
     }
 
+
     return (
-        <div className={`channel-container ${channelState.state == "menu" ? "menu" : "selected"}`}>
+        <div ref={channel} className={`channel-container ${channelState.state == "menu" ? "menu" : "selected"}`}>
 
             {channelState.state == "menu" &&
                 <div>
@@ -132,9 +140,3 @@ export default function Channel({ id, channelState, setChannelState }) {
 //     //console.log(arg_channelState)
 //     return arg_channelState.state === "menu" ? channelMetadata["channels"][0]["icon"] : channelMetadata["channels"][channel]["banner"];
 // }
-
-function loadChannel() {
-    if (screen.width < 2) {
-        console.log("hi")
-    }
-}

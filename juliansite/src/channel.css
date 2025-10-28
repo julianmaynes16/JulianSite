@@ -80,7 +80,7 @@
 
 .channel-container.menu {
     position: relative;
-    width: 30vh;
+    width: var(--channel-width);
     aspect-ratio: 170/96;
 }
 
@@ -88,6 +88,7 @@
 .channel-background {
     position: absolute;
     height: 100%;
+    /* width: 100%; */
     left: 0;
     z-index: var(--channel-background-z);
     filter: invert(75%) sepia(11%) saturate(0%) hue-rotate(146deg) brightness(95%) contrast(102%)
