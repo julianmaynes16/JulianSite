@@ -47,7 +47,7 @@
         },
         {
             "name": null,
-            "icon": "./src/assets/videos/empty_menu.mp4",
+            "icon": "./src/assets/videos/null_i.mp4",
             "banner": null,
             "select_video": null,
             "music": null,
